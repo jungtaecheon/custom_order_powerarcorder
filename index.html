@@ -11,14 +11,14 @@
                 padding: 0;
             }
 
-            div {
+            /* div {
                 border-style: solid;
                 border-width: 0.1px;
-            }
+            } */
 
             /* シミュレーション コンテナ */
             .simulation-container{
-                position: absolute;
+                position: relative;
                 top: 0px;
                 left: 0px;
                 /* メインコンテナ中央寄せ */
@@ -59,24 +59,22 @@
             }
 
             .progress-status-area{
-                width: 100%;
+                width: 60vw;
                 height: 80px;
                 position: relative;
-                bottom: 0px;
-                left: 0px;
             }
 
             .glove-parts-selector{
-                width: 20%;
+                width: 18%;
                 height: 100%;
                 position: absolute;
                 top: 0px;
-                right: 0px;
+                right: 10px;
                 overflow: scroll;
             }
 
             /* インプットパネル コンテナ */
-            .controll-panel-container{
+            .control-panel-container{
                 position: absolute;
                 width: 40vw;
                 height: 100vh;
@@ -84,7 +82,7 @@
                 top: 0px;
             }
 
-            .controll-panel-header{
+            .control-panel-header{
                 position: relative;
                 height: 50px;
                 width: 100%;
@@ -98,7 +96,7 @@
                 line-height: 50px;
             }
 
-            .controll-panel-contents{
+            .control-panel-contents{
                 position: relative;
                 height: 100%;
                 background-color: #F6F1EE;
@@ -174,10 +172,20 @@
                 background-color: #55b776;
             }
 
+            .parts-selector-img {
+                width: 100%;
+                background-color: #f0f0f0;
+            }
+
+            .parts-selector-img:hover {
+                opacity: 0.7;
+                cursor: pointer;
+            }
+
+
             @media (max-width: 700px) {
             /* @media (max-width: 768px) { */
                 .simulation-container{
-                    position: relative;
                     margin-top: 80px;
                     width: 100vw;
                     height: auto;
@@ -186,10 +194,11 @@
                     transition: all 500ms ease;
                 }
 
-                .controll-panel-container{
+                .control-panel-container{
                     position: relative;
                     width: 100vw;
-                    height: auto;
+                    /* height: auto; */
+                    height: 30vh;
                     -webkit-transition: all 500ms ease;
                     -moz-transition: all 500ms ease;
                     transition: all 500ms ease;
@@ -199,12 +208,21 @@
                     width: 100%;
                     height: 80px;
                     position: relative;
+                    display: flex;
                     top: 0px;
                     left: 0px;
                     overflow: scroll;
                     -webkit-transition: all 500ms ease;
                     -moz-transition: all 500ms ease;
                     transition: all 500ms ease;
+                }
+
+                .parts-selector-img {
+                    height: 100%;
+                    float: left;
+                    width: auto;
+                    background-color: #f0f0f0;
+                    margin-right: 10px;
                 }
 
                 .glove-simulation{
@@ -216,7 +234,7 @@
 
                 .progress-status-area{
                     position: absolute;
-                    top: -80px;
+                    top: 0px;
                     left: 0px;
                     width: 100%;
                     -webkit-transition: all 500ms ease;
@@ -228,6 +246,7 @@
                     padding: 8px 8px;
                     font-size: 12px;
                     margin-top: 80px;
+                    z-index: 10;
                 }
 
                 .progressbar li {
@@ -389,57 +408,72 @@
                 </div>
             </div>
 
-            <div class="progress-status-area" id="progress_status_area">
-                <ul class="progressbar">
-                    <li id="progressbar_step1" class="active">拳部</li>
-                    <li id="progressbar_step2" class="active">タイプ</li>
-                    <li id="progressbar_step3" class="">カラー</li>
-                    <li id="progressbar_step4" class="">サイズ</li>
-                    <li id="progressbar_step5" class="">指</li>
-                    <li id="progressbar_step6" class="">当て革</li>
-                    <li id="progressbar_step7" class="">刺繍</li>
-                    <li id="progressbar_step8" class="">同意</li>
-                </ul>
-
-                <button class="next-step-button" id="next_step_button">次のステップ</button>
-                <!-- <button type="submit" class="submit-button" id="submit_button">完成</button> -->
-            </div>
-
             <div class="glove-parts-selector" id="glove_parts_selector">
-                <a>グローブのパーツ選択エリア</a>
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
+                <img class="parts-selector-img" src="./img/parts-selector-1.png">
             </div>
         </div>
 
-        <div class="controll-panel-container" id="controll_panel_container">
+        <div class="progress-status-area" id="progress_status_area">
+            <ul id="progressbar" class="progressbar">
+                <li id="progressbar_step1">拳部</li>
+                <li id="progressbar_step2">タイプ</li>
+                <li id="progressbar_step3">カラー</li>
+                <li id="progressbar_step4">サイズ</li>
+                <li id="progressbar_step5">指</li>
+                <li id="progressbar_step6">当て革</li>
+                <li id="progressbar_step7">刺繍</li>
+                <li id="progressbar_step8">同意</li>
+            </ul>
 
-            <div class="controll-panel-contents" id="controll_panel_contents">
-                <div class="controll-panel-header" id="controll_panel_header">
+            <button class="next-step-button" id="next_step_button">次のステップ</button>
+            <!-- <button type="submit" class="submit-button" id="submit_button">完成</button> -->
+        </div>
+
+        <div class="control-panel-container" id="control_panel_container">
+
+            <div class="control-panel-contents" id="control_panel_contents">
+                <div class="control-panel-header" id="control_panel_header">
                     <b class="panel-header"></b>
                 </div>
 
-                <div id="controll_panel_step1">
-                    ステップ1
+                <div id="control_panel_step1" style="display:none">
+                    ステップ1のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step2">
-                    ステップ2
+                <div id="control_panel_step2" style="display:none">
+                    ステップ2のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step3">
-                    ステップ3
+                <div id="control_panel_step3" style="display:none">
+                    ステップ3のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step4">
-                    ステップ4
+                <div id="control_panel_step4" style="display:none">
+                    ステップ4のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step5">
-                    ステップ5
+                <div id="control_panel_step5" style="display:none">
+                    ステップ5のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step6">
-                    ステップ6
+                <div id="control_panel_step6" style="display:none">
+                    ステップ6のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step7">
-                    ステップ7
+                <div id="control_panel_step7" style="display:none">
+                    ステップ7のコンテンツ（予定）
                 </div>
-                <div id="controll_panel_step8">
-                    注意事項
+                <div id="control_panel_step8" style="display:none">
+                    注意事項（予定）
                 </div>
 
             </div>
@@ -449,37 +483,114 @@
 
     <script src="js/jquery-3.6.0.min.js"></script>
     <script>
-        let current_step = 2;
+        let current_step = 1;
         const original_color_parts_list = [10, 14, 15];
+        const STEP_MAX_COUNT = 8;
+
         $(function() {
+
+            // 初期処理
+            set_step_by_current_step();
+
+            // 次のステップが押されたら
+            $('#next_step_button').on('click', function() {
+                if(current_step < STEP_MAX_COUNT){
+                    current_step+=1;
+                    set_step_by_current_step();
+                }else{
+                    // 完了を押した場合
+                    alert('開発中');
+                }
+            });
+
             // current_step からコントルールパネルのヘッダーをセット
-            switch (current_step) {
-                case 1:
-                    $("#controll_panel_header").children('b').text('STEP1. 拳部');
-                    break;
-                case 2:
-                    $("#controll_panel_header").children('b').text('STEP2. タイプ');
-                    break;
-                case 3:
-                    $("#controll_panel_header").children('b').text('STEP3. カラー選択');
-                    break;
-                case 4:
-                    $("#controll_panel_header").children('b').text('STEP4. サイズ');
-                    break;
-                case 5:
-                    $("#controll_panel_header").children('b').text('STEP5. 指の長さ');
-                    break;
-                case 6:
-                    $("#controll_panel_header").children('b').text('STEP6. 当て革の型');
-                    break;
-                case 7:
-                    $("#controll_panel_header").children('b').text('STEP7. オンネーム');
-                    break;
-                case 8:
-                    $("#controll_panel_header").children('b').text('STEP8. 注意事項');
-                    break;
-                default:
-                    $("#controll_panel_header").children('b').text('STEP1. 拳部');
+            function set_step_by_current_step(){
+                switch (current_step) {
+                    case 1:
+                        $("#control_panel_header").children('b').text('STEP1. 拳部');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 2:
+                        $("#control_panel_header").children('b').text('STEP2. タイプ');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 3:
+                        $("#control_panel_header").children('b').text('STEP3. カラー選択');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 4:
+                        $("#control_panel_header").children('b').text('STEP4. サイズ');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 5:
+                        $("#control_panel_header").children('b').text('STEP5. 指の長さ');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 6:
+                        $("#control_panel_header").children('b').text('STEP6. 当て革の型');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 7:
+                        $("#control_panel_header").children('b').text('STEP7. オンネーム');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+                        break;
+                    case 8:
+                        $("#control_panel_header").children('b').text('STEP8. 注意事項');
+                        $(`#progressbar_step${current_step-1}`).addClass('active');
+                        display_none_control_panel_without_current_step();
+                        display_none_parts_selector_without_step3();
+
+                        $("#next_step_button").text('完了');
+                        $('#next_step_button').attr('type', 'submit');
+                        $("#next_step_button").css({
+                            'background-color':'#ca1b1b',
+                            'padding-left':'20px',
+                            'padding-right':'20px',
+                        });
+                        $("#next_step_button").hover(function() {
+                            // カーソルが当たった時の処理
+                            $(this).css("background-color", "#da4343");
+                        }, function() {
+                            // カーソルが離れた時の処理
+                            $(this).css("background-color", "#ca1b1b");
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // current_step以外のcontrol_panelを非表示にする
+            function display_none_control_panel_without_current_step(){
+                for(var i=1; i<=STEP_MAX_COUNT; i++){
+                    if(current_step === i){
+                        $(`#control_panel_step${i}`).css('display','block');
+                    }else{
+                        $(`#control_panel_step${i}`).css('display','none');
+                    }
+                }
+            }
+
+            // current_stepが3以外の場合、parts_selectorを非表示にする
+            function display_none_parts_selector_without_step3(){
+                if(current_step === 3){
+                    $("#glove_parts_selector").css('display','block');
+                }else{
+                    $("#glove_parts_selector").css('display','none');
+                }
             }
 
         });
