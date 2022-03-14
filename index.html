@@ -13,25 +13,26 @@
 
             div {
                 border-style: solid;
+                border-width: 0.1px;
             }
 
             /* シミュレーション コンテナ */
-            #simulation_container{
+            .simulation-container{
                 position: absolute;
                 top: 0px;
                 left: 0px;
                 /* メインコンテナ中央寄せ */
                 /* margin: 0 auto; */
                 width: 60vw;
-                height: 100vh;
+                height: auto;
             }
 
-            #glove_parts, #glove_palm_parts{
+            .glove-parts, .glove-palm-parts{
                 mix-blend-mode: multiply;
             }
 
-            #glove_simulation{
-                background-image:url(./grove.png);
+            .glove-simulation{
+                background-image:url(./img/grove.png);
                 background-size: contain;
                 background-repeat: no-repeat;
                 width: 80%;
@@ -40,15 +41,15 @@
                 left: 0px;
             }
 
-            #logo_svg {
+            .logo-svg {
                 position: absolute;
                 top: 0px;
                 left: 0px;
                 z-index: 10;
             }
 
-            #glove_palm_simulation{
-                background-image:url(./grove-palm.png);
+            .glove-palm-simulation{
+                background-image:url(./img/grove-palm.png);
                 background-size: contain;
                 background-repeat: no-repeat;
                 width: 35%;
@@ -57,15 +58,15 @@
                 right: 0px;
             }
 
-            #progress_status_area{
-                width: 80%;
+            .progress-status-area{
+                width: 100%;
                 height: 80px;
                 position: relative;
                 bottom: 0px;
                 left: 0px;
             }
 
-            #glove_parts_selector{
+            .glove-parts-selector{
                 width: 20%;
                 height: 100%;
                 position: absolute;
@@ -75,7 +76,7 @@
             }
 
             /* インプットパネル コンテナ */
-            #controll_panel_container{
+            .controll-panel-container{
                 position: absolute;
                 width: 40vw;
                 height: 100vh;
@@ -83,7 +84,7 @@
                 top: 0px;
             }
 
-            #controll_panel_header{
+            .controll-panel-header{
                 position: relative;
                 height: 50px;
                 width: 100%;
@@ -97,15 +98,85 @@
                 line-height: 50px;
             }
 
-            #controll_panel_contents{
+            .controll-panel-contents{
                 position: relative;
                 height: 100%;
                 background-color: #F6F1EE;
             }
 
+            .next-step-button {
+                position: absolute;
+                right: 0;
+                appearance: none;
+                border: 0;
+                border-radius: 5px;
+                background: #eb6100;
+                color: #fff;
+                padding: 10px 10px;
+                margin-right: 15px;
+                font-size: 16px;
+            }
+            .next-step-button:hover {
+                background: #f56500;
+                cursor : pointer;
+            }
+
+            .progressbar {
+                counter-reset: step;
+                z-index: 0;
+                position: relative;
+                /* margin: 0; */
+                padding: 0;
+            }
+            .progressbar li {
+                list-style-type: none;
+                width: 9%;
+                float: left;
+                font-size: 12px;
+                position: relative;
+                text-align: center;
+                text-transform: uppercase;
+                color: #aaa;
+            }
+            .progressbar li:before {
+                width: 24px;
+                height: 24px;
+                content: counter(step);
+                counter-increment: step;
+                line-height: 24px;
+                display: block;
+                text-align: center;
+                margin: 0 auto 5px auto;
+                border-radius: 50%;
+                background-color: #eee;
+            }
+            .progressbar li:after {
+                width: 100%;
+                height: 2px;
+                content: '';
+                position: absolute;
+                background-color: #eee;
+                top: 12px;
+                left: -50%;
+                z-index: -1;
+            }
+            .progressbar li:first-child:after {
+                content: none;
+            }
+            .progressbar li.active {
+                color: black;
+            }
+            .progressbar li.active:before {
+                background-color: #55b776;
+                color:#fff;
+            }
+            .progressbar li.active + li:after {
+                background-color: #55b776;
+            }
+
             @media (max-width: 700px) {
             /* @media (max-width: 768px) { */
-                #simulation_container{
+                .simulation-container{
                     position: relative;
                     margin-top: 80px;
                     width: 100vw;
@@ -115,7 +186,7 @@
                     transition: all 500ms ease;
                 }
 
-                #controll_panel_container{
+                .controll-panel-container{
                     position: relative;
                     width: 100vw;
                     height: auto;
@@ -124,7 +195,7 @@
                     transition: all 500ms ease;
                 }
 
-                #glove_parts_selector{
+                .glove-parts-selector{
                     width: 100%;
                     height: 80px;
                     position: relative;
@@ -136,14 +207,14 @@
                     transition: all 500ms ease;
                 }
 
-                #glove_simulation{
+                .glove-simulation{
                     width: 100%;
                     -webkit-transition: all 500ms ease;
                     -moz-transition: all 500ms ease;
                     transition: all 500ms ease;
                 }
 
-                #progress_status_area{
+                .progress-status-area{
                     position: absolute;
                     top: -80px;
                     left: 0px;
@@ -152,7 +223,19 @@
                     -moz-transition: all 500ms ease;
                     transition: all 500ms ease;
                 }
+
+                .next-step-button {
+                    padding: 8px 8px;
+                    font-size: 12px;
+                    margin-top: 80px;
+                }
+
+                .progressbar li {
+                    width: 11%;
+                }
+
             }
+
 
             .parts-color-white{fill: #FFF}
             .parts-color-black{fill:#222}
@@ -204,10 +287,10 @@
 
     </head>
     <body>
-        <div id="simulation_container">
-            <div id="glove_simulation">
+        <div class="simulation-container" id="simulation_container">
+            <div class="glove-simulation" id="glove_simulation">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                    y="0px" viewBox="0 0 1000 1000" xml:space="preserve" id="glove_parts">
+                    y="0px" viewBox="0 0 1000 1000" xml:space="preserve" id="glove_parts" class="glove-parts">
                     <path id="glove_parts_01" class="parts-color-red" d="M524,118c0,0,13,11,13,13s-11,5-10,18s2,20,5,33s12,56,13,62s6,37,5,42s6,18,6,23s3,33,2,38
                         s8,20,9,22s16,41,19,57s5,13,5,15s0,4,1,6s2,5,2,8s1,8,1,9s6,17,6,20s2,3,2,5s2,9,3,12s11,27,14,33s13,22,14,24s9,12,10,16
                         c0,0,12,6,14,7s12,4,21,2s15-3,15-3s5-9,6-14s13-18,13-18s-1-3-2-3s18-25,19-30s24-33,24-34s19-31,35-41s24-14,24-14s-4-1-6-1
@@ -260,13 +343,13 @@
                 </svg>
 
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                y="0px" viewBox="0 0 1000 1000" xml:space="preserve" id="logo_svg">
-                    <image style="overflow:visible;" width="1000" height="1000" id="logo" xlink:href="./logo.png"  transform="matrix(0.8032 3.473013e-02 -3.473013e-02 0.8032 121.1654 106.4353)">
+                y="0px" viewBox="0 0 1000 1000" xml:space="preserve" class="logo-svg" id="logo_svg">
+                    <image style="overflow:visible;" width="1000" height="1000" id="logo" xlink:href="./img/logo.png"  transform="matrix(0.8032 3.473013e-02 -3.473013e-02 0.8032 121.1654 106.4353)">
                     </image>
                 </svg>
 
-                <div id="glove_palm_simulation">
-                    <svg version="1.1" id="glove_palm_parts" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                <div class="glove-palm-simulation" id="glove_palm_simulation">
+                    <svg version="1.1" class="glove-palm-parts" id="glove_palm_parts" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                     y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
                         <path id="glove_parts_01" class="parts-color-red" d="M481.7,782.2c0,0,0.2-4.7-2.3-7.2c-5.1-5.1-14.8-6.3-29.8-23.4c0,0-10.7,4.8-33.5-3.7
                         c-13.8-5.1-33.9-22.5-36.7-24.3c-2.8-1.8-10.1-12.4-13.3-15.6c-3.2-3.2-26.6-22-33.5-27.1c-6.9-5-18.8-15.6-21.1-19.3
@@ -306,22 +389,59 @@
                 </div>
             </div>
 
-            <div id="progress_status_area">
-                <a>進捗ステータスエリア</a>
+            <div class="progress-status-area" id="progress_status_area">
+                <ul class="progressbar">
+                    <li id="progressbar_step1" class="active">拳部</li>
+                    <li id="progressbar_step2" class="active">タイプ</li>
+                    <li id="progressbar_step3" class="">カラー</li>
+                    <li id="progressbar_step4" class="">サイズ</li>
+                    <li id="progressbar_step5" class="">指</li>
+                    <li id="progressbar_step6" class="">当て革</li>
+                    <li id="progressbar_step7" class="">刺繍</li>
+                    <li id="progressbar_step8" class="">同意</li>
+                </ul>
+
+                <button class="next-step-button" id="next_step_button">次のステップ</button>
+                <!-- <button type="submit" class="submit-button" id="submit_button">完成</button> -->
             </div>
 
-            <div id="glove_parts_selector">
+            <div class="glove-parts-selector" id="glove_parts_selector">
                 <a>グローブのパーツ選択エリア</a>
             </div>
         </div>
 
-        <div id="controll_panel_container">
+        <div class="controll-panel-container" id="controll_panel_container">
 
-            <div id="controll_panel_contents">
-                <div id="controll_panel_header">
-                    <b class="panel-header">STEP3. カラー選択</b>
+            <div class="controll-panel-contents" id="controll_panel_contents">
+                <div class="controll-panel-header" id="controll_panel_header">
+                    <b class="panel-header"></b>
                 </div>
-                コントルールパネルコンテンツ
+
+                <div id="controll_panel_step1">
+                    ステップ1
+                </div>
+                <div id="controll_panel_step2">
+                    ステップ2
+                </div>
+                <div id="controll_panel_step3">
+                    ステップ3
+                </div>
+                <div id="controll_panel_step4">
+                    ステップ4
+                </div>
+                <div id="controll_panel_step5">
+                    ステップ5
+                </div>
+                <div id="controll_panel_step6">
+                    ステップ6
+                </div>
+                <div id="controll_panel_step7">
+                    ステップ7
+                </div>
+                <div id="controll_panel_step8">
+                    注意事項
+                </div>
+
             </div>
         </div>
 
@@ -329,9 +449,39 @@
 
     <script src="js/jquery-3.6.0.min.js"></script>
     <script>
+        let current_step = 2;
         const original_color_parts_list = [10, 14, 15];
         $(function() {
-            //
+            // current_step からコントルールパネルのヘッダーをセット
+            switch (current_step) {
+                case 1:
+                    $("#controll_panel_header").children('b').text('STEP1. 拳部');
+                    break;
+                case 2:
+                    $("#controll_panel_header").children('b').text('STEP2. タイプ');
+                    break;
+                case 3:
+                    $("#controll_panel_header").children('b').text('STEP3. カラー選択');
+                    break;
+                case 4:
+                    $("#controll_panel_header").children('b').text('STEP4. サイズ');
+                    break;
+                case 5:
+                    $("#controll_panel_header").children('b').text('STEP5. 指の長さ');
+                    break;
+                case 6:
+                    $("#controll_panel_header").children('b').text('STEP6. 当て革の型');
+                    break;
+                case 7:
+                    $("#controll_panel_header").children('b').text('STEP7. オンネーム');
+                    break;
+                case 8:
+                    $("#controll_panel_header").children('b').text('STEP8. 注意事項');
+                    break;
+                default:
+                    $("#controll_panel_header").children('b').text('STEP1. 拳部');
+            }
+
         });
     </script>
 </html>
