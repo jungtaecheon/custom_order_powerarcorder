@@ -147,6 +147,7 @@
                 margin: 0 auto 5px auto;
                 border-radius: 50%;
                 background-color: #eee;
+                cursor: pointer;
             }
             .progressbar li:after {
                 width: 100%;
@@ -434,7 +435,7 @@
                 <li id="progressbar_step2">タイプ</li>
                 <li id="progressbar_step3">カラー</li>
                 <li id="progressbar_step4">サイズ</li>
-                <li id="progressbar_step5">指</li>
+                <li id="progressbar_step5">指長さ</li>
                 <li id="progressbar_step6">当て革</li>
                 <li id="progressbar_step7">刺繍</li>
                 <li id="progressbar_step8">同意</li>
@@ -448,10 +449,10 @@
 
             <div class="control-panel-contents" id="control_panel_contents">
                 <div class="control-panel-header" id="control_panel_header">
-                    <b class="panel-header"></b>
+                    <b class="panel-header">STEP1. 拳部</b>
                 </div>
 
-                <div id="control_panel_step1" style="display:none">
+                <div id="control_panel_step1">
                     ステップ1のコンテンツ（予定）
                 </div>
                 <div id="control_panel_step2" style="display:none">
@@ -490,69 +491,66 @@
         $(function() {
 
             // 初期処理
-            set_step_by_current_step();
+            // selectorは表示しない（最初からcssにdisplay:noneを指定すると、横スクロールに問題があったため）
+            $("#glove_parts_selector").hide();
 
             // 次のステップが押されたら
             $('#next_step_button').on('click', function() {
                 if(current_step < STEP_MAX_COUNT){
+                    // 押されたSTEPをactiveにする
+                    $(`#progressbar_step${current_step}`).addClass('active');
+                    // current_stepを+1する
                     current_step+=1;
-                    set_step_by_current_step();
+                    // +1されたcurrent_stepに該当する画面を表示
+                    display_none_control_panel_without_step(current_step);
+                    display_none_parts_selector_without_step3(current_step);
+
+                    set_step_title_by_current_step(current_step);
                 }else{
                     // 完了を押した場合
                     alert('開発中');
                 }
             });
 
+            // STEPが押されたら
+            $('#progressbar').children('li').on('click', function() {
+                let selected_step_num = $(this).index()+1;
+                if( selected_step_num <= current_step ){
+                    alert();
+                    display_none_control_panel_without_step(selected_step_num);
+                    display_none_parts_selector_without_step3(selected_step_num);
+                    set_step_title_by_current_step(selected_step_num);
+                }
+            });
+
             // current_step からコントルールパネルのヘッダーをセット
-            function set_step_by_current_step(){
-                switch (current_step) {
+            function set_step_title_by_current_step(step){
+                switch (step) {
                     case 1:
                         $("#control_panel_header").children('b').text('STEP1. 拳部');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 2:
                         $("#control_panel_header").children('b').text('STEP2. タイプ');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 3:
                         $("#control_panel_header").children('b').text('STEP3. カラー選択');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 4:
                         $("#control_panel_header").children('b').text('STEP4. サイズ');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 5:
                         $("#control_panel_header").children('b').text('STEP5. 指の長さ');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 6:
                         $("#control_panel_header").children('b').text('STEP6. 当て革の型');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 7:
                         $("#control_panel_header").children('b').text('STEP7. オンネーム');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
                         break;
                     case 8:
                         $("#control_panel_header").children('b').text('STEP8. 注意事項');
-                        $(`#progressbar_step${current_step-1}`).addClass('active');
-                        display_none_control_panel_without_current_step();
-                        display_none_parts_selector_without_step3();
 
+                        // 完了ボタンを作成
                         $("#next_step_button").text('完了');
                         $('#next_step_button').attr('type', 'submit');
                         $("#next_step_button").css({
@@ -573,10 +571,10 @@
                 }
             }
 
-            // current_step以外のcontrol_panelを非表示にする
-            function display_none_control_panel_without_current_step(){
+            // 該当step以外のcontrol_panelを非表示にする
+            function display_none_control_panel_without_step(step){
                 for(var i=1; i<=STEP_MAX_COUNT; i++){
-                    if(current_step === i){
+                    if(step === i){
                         $(`#control_panel_step${i}`).show();
                     }else{
                         $(`#control_panel_step${i}`).hide();
@@ -585,8 +583,8 @@
             }
 
             // current_stepが3以外の場合、parts_selectorを非表示にする
-            function display_none_parts_selector_without_step3(){
-                if(current_step === 3){
+            function display_none_parts_selector_without_step3(step){
+                if(step === 3){
                     $("#glove_parts_selector").show();
                 }else{
                     $("#glove_parts_selector").hide();
