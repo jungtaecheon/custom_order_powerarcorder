@@ -515,11 +515,15 @@
             // STEPが押されたら
             $('#progressbar').children('li').on('click', function() {
                 let selected_step_num = $(this).index()+1;
-                if( selected_step_num <= current_step ){
-                    alert();
+                if( selected_step_num < current_step ){
+                    alert(`STEP${selected_step_num}を表示します。`);
                     display_none_control_panel_without_step(selected_step_num);
                     display_none_parts_selector_without_step3(selected_step_num);
                     set_step_title_by_current_step(selected_step_num);
+                }else if( selected_step_num == current_step ){
+                    alert(`STEP${selected_step_num}は既に表示されております。`);
+                }else{
+                    alert(`まだ、STEP${selected_step_num-1}が完了しておりません。`);
                 }
             });
 
