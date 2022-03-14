@@ -577,9 +577,9 @@
             function display_none_control_panel_without_current_step(){
                 for(var i=1; i<=STEP_MAX_COUNT; i++){
                     if(current_step === i){
-                        $(`#control_panel_step${i}`).css('display','block');
+                        $(`#control_panel_step${i}`).show();
                     }else{
-                        $(`#control_panel_step${i}`).css('display','none');
+                        $(`#control_panel_step${i}`).hide();
                     }
                 }
             }
@@ -587,9 +587,9 @@
             // current_stepが3以外の場合、parts_selectorを非表示にする
             function display_none_parts_selector_without_step3(){
                 if(current_step === 3){
-                    $("#glove_parts_selector").css('display','block');
+                    $("#glove_parts_selector").show();
                 }else{
-                    $("#glove_parts_selector").css('display','none');
+                    $("#glove_parts_selector").hide();
                 }
             }
 
