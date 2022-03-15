@@ -1,0 +1,295 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* div {
+    border-style: solid;
+    border-width: 0.1px;
+} */
+
+/* シミュレーション コンテナ */
+.simulation-container{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    /* メインコンテナ中央寄せ */
+    /* margin: 0 auto; */
+    width: 60vw;
+    height: auto;
+}
+
+.glove-parts, .glove-palm-parts{
+    mix-blend-mode: multiply;
+}
+
+.glove-simulation{
+    background-image:url(../img/grove.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.logo-svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+
+.glove-palm-simulation{
+    background-image:url(../img/grove-palm.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35%;
+    position: absolute;
+    bottom: 25px;
+    right: 0px;
+}
+
+.progress-status-area{
+    width: 60vw;
+    height: 80px;
+    position: relative;
+}
+
+.glove-parts-selector{
+    width: 18%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    overflow: scroll;
+}
+
+/* インプットパネル コンテナ */
+.control-panel-container{
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    right: 0px;
+    top: 0px;
+}
+
+.control-panel-header{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    text-align:center;
+    background-color: #012F3D;
+}
+
+.panel-header{
+    color: #FFF;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.control-panel-contents{
+    position: relative;
+    height: 100%;
+    background-color: #F6F1EE;
+}
+
+.next-step-button {
+    position: absolute;
+    right: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #d8d8d8;
+    color: #fff;
+    padding: 10px 10px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+.next-step-button:hover {
+    cursor : pointer;
+}
+
+.progressbar {
+    counter-reset: step;
+    z-index: 0;
+    position: relative;
+    /* margin: 0; */
+    padding: 0;
+}
+.progressbar li {
+    list-style-type: none;
+    width: 9%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #aaa;
+}
+.progressbar li:before {
+    width: 24px;
+    height: 24px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 24px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 5px auto;
+    border-radius: 50%;
+    background-color: #eee;
+    cursor: pointer;
+}
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #eee;
+    top: 12px;
+    left: -50%;
+    z-index: -1;
+}
+.progressbar li:first-child:after {
+    content: none;
+}
+.progressbar li.active {
+    color: black;
+}
+.progressbar li.active:before {
+    background-color: #55b776;
+    color:#fff;
+}
+.progressbar li.active + li:after {
+    background-color: #55b776;
+}
+
+.parts-selector-img {
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.parts-selector-img:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+@media (max-width: 700px) {
+/* @media (max-width: 768px) { */
+    .simulation-container{
+        margin-top: 80px;
+        width: 100vw;
+        height: auto;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .control-panel-container{
+        position: relative;
+        width: 100vw;
+        /* height: auto; */
+        height: 30vh;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .glove-parts-selector{
+        width: 100%;
+        height: 80px;
+        position: relative;
+        display: flex;
+        top: 0px;
+        left: 0px;
+        overflow: scroll;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .parts-selector-img {
+        height: 100%;
+        float: left;
+        width: auto;
+        background-color: #f0f0f0;
+        margin-right: 10px;
+    }
+
+    .glove-simulation{
+        width: 100%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .progress-status-area{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .next-step-button {
+        padding: 8px 8px;
+        font-size: 12px;
+        margin-top: 80px;
+        z-index: 10;
+    }
+
+    .progressbar li {
+        width: 11%;
+    }
+
+}
+
+
+.parts-color-white{fill: #FFF}
+.parts-color-black{fill:#222}
+.parts-color-red{fill:#af1616}
+.parts-color-navy{fill:#292f42}
+.parts-color-blue{fill:#0c3c75}
+.parts-color-silver{fill:#EEE}
+.parts-color-gold{fill:#ccb35f}
+.parts-color-lime{fill:#b7f750}
+.parts-color-gray{fill:#807e7e}
+.parts-color-green{fill:#018001}
+.parts-color-yellow{fill:#faea3c}
+.parts-color-orange{fill:#e94f02}
+.parts-color-pink{fill:#f873ad}
+.parts-color-purple{fill:#6e3796}
+.parts-color-skyblue{fill: #2f9dcf;}
+
+/* シリコン */
+.parts-10-color-white{fill: #FFF}
+.parts-10-color-black{fill: #444;}
+.parts-10-color-red{fill: #d64e55;}
+.parts-10-color-lime{fill: #a8e973;}
+.parts-10-color-gray{fill: #bdbdbd}
+.parts-10-color-silver{fill:#EEE}
+.parts-10-color-gold{fill: #f8dd93;}
+
+/* 手首ベルトの枠 */
+.parts-14-color-white{fill: #FFF}
+.parts-14-color-black{fill:#222}
+.parts-14-color-red{fill:#af1616}
+.parts-14-color-navy{fill:#292f42}
+.parts-14-color-blue{fill:#0c3c75}
+.parts-14-color-yellow{fill:#faea3c}
+.parts-14-color-orange{fill:#e94f02}
+.parts-14-color-pink{fill:#d88ea2;}
+.parts-14-color-silver{fill:#EEE}
+.parts-14-color-gold{fill: #dbbc7f;}
+
+/* 袖ゴム */
+.parts-15-color-white{fill: #FFF}
+.parts-15-color-black{fill:#222}
+.parts-15-color-red{fill:#af1616}
+.parts-15-color-blue{fill:#1f2250;}
+
+/* ステッチ（固定） */
+.parts-17-color-gold{fill:#f3e95f;}
