@@ -138,7 +138,7 @@ $(function() {
             alert(`STEP${selected_step_num}は既に表示されております。`);
 
         }else{
-            alert(`まだ、STEP${selected_step_num-1}が完了しておりません。`);
+            alert(`まだ、STEP${selected_step_num-1}まで完了しておりません。`);
         }
     });
 
