@@ -9,6 +9,9 @@
 
     </head>
     <body>
+        <button id="debug_mode">検証モードにする</button>
+        <!-- TODO こちらの商品は両手用のカスタムオーダー製品となります。（pop up） -->
+
         <div class="simulation-container" id="simulation_container">
             <div class="glove-simulation" id="glove_simulation">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -139,7 +142,7 @@
                     <li id="progressbar_step_2">タイプ</li>
                     <li id="progressbar_step_3">カラー</li>
                     <li id="progressbar_step_4">サイズ</li>
-                    <li id="progressbar_step_5">指-長さ</li>
+                    <li id="progressbar_step_5">指/長</li>
                     <li id="progressbar_step_6">当て革</li>
                     <li id="progressbar_step_7">刺繍</li>
                     <li id="progressbar_step_8">同意</li>
@@ -156,91 +159,143 @@
                     </div>
 
                     <div id="control_panel_step_1" style="display: none;">
-                        ステップ1のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_1_1" name="dummy_name_1" value="dummy_value_1_1">
-                            <label for="dummy_id_1_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_1_2" name="dummy_name_1" value="dummy_value_1_2">
-                            <label for="dummy_id_1_2">ダミーCheck 2</label>
+                        <div id="control_panel_step_1_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_palm_material_1" name="dummy_name_1" value="dummy_value_1_1">
+                                <label for="panel_select_palm_material_1">スムースシープ</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_palm_material_2" name="dummy_name_1" value="dummy_value_1_2">
+                                <label for="panel_select_palm_material_2">型押しシープ</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_2" style="display: none;">
-                        ステップ2のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_2_1" name="dummy_name_2" value="dummy_value_2_1">
-                            <label for="dummy_id_2_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_2_2" name="dummy_name_2" value="dummy_value_2_2">
-                            <label for="dummy_id_2_2">ダミーCheck 2</label>
+                        <div id="control_panel_step_2_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_type_1" name="dummy_name_2" value="dummy_value_2_1">
+                                <label for="panel_select_type_1">両手用</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_type_2" name="dummy_name_2" value="dummy_value_2_2">
+                                <label for="panel_select_type_2">片手用（右打者用-左手）</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_type_3" name="dummy_name_2" value="dummy_value_2_3">
+                                <label for="panel_select_type_3">片手用（左打者用-右手）</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_3" style="display: none;">
-                        ステップ3のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_3_1" name="dummy_name_3" value="dummy_value_3_1">
-                            <label for="dummy_id_3_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_3_2" name="dummy_name_3" value="dummy_value_3_2">
-                            <label for="dummy_id_3_2">ダミーCheck 2</label>
+                        実装中
+                        <div id="control_panel_step_3_select_list">
+                            <div>
+                                <input type="radio" id="color_dummy" name="dummy_name_3" value="dummy_value_3_1">
+                                <label for="color_dummy">red</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_4" style="display: none;">
-                        ステップ4のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_4_1" name="dummy_name_4" value="dummy_value_4_1">
-                            <label for="dummy_id_4_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_4_2" name="dummy_name_4" value="dummy_value_4_2">
-                            <label for="dummy_id_4_2">ダミーCheck 2</label>
+                        <div id="control_panel_step_4_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_size_1" name="dummy_name_4" value="dummy_value_4_1">
+                                <label for="panel_select_size_1">21cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_2" name="dummy_name_4" value="dummy_value_4_2">
+                                <label for="panel_select_size_2">22cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_3" name="dummy_name_4" value="dummy_value_4_3">
+                                <label for="panel_select_size_3">23cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_4" name="dummy_name_4" value="dummy_value_4_4">
+                                <label for="panel_select_size_4">24cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_5" name="dummy_name_4" value="dummy_value_4_5">
+                                <label for="panel_select_size_5">25cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_6" name="dummy_name_4" value="dummy_value_4_6">
+                                <label for="panel_select_size_6">26cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_7" name="dummy_name_4" value="dummy_value_4_7">
+                                <label for="panel_select_size_7">27cm</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_size_8" name="dummy_name_4" value="dummy_value_4_8">
+                                <label for="panel_select_size_8">28cm</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_5" style="display: none;">
-                        ステップ5のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_5_1" name="dummy_name_5" value="dummy_value_5_1">
-                            <label for="dummy_id_5_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_5_2" name="dummy_name_5" value="dummy_value_5_2">
-                            <label for="dummy_id_5_2">ダミーCheck 2</label>
+                        <div id="control_panel_step_5_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_finger_size_1" name="dummy_name_5" value="dummy_value_5_1">
+                                <label for="panel_select_finger_size_1">S (定番型より3mm短い)</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_finger_size_2" name="dummy_name_5" value="dummy_value_5_2">
+                                <label for="panel_select_finger_size_2">M (定番型)</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_finger_size_3" name="dummy_name_5" value="dummy_value_5_3">
+                                <label for="panel_select_finger_size_3">L (定番型より3mm長い)</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_6" style="display: none;">
-                        ステップ6のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_6_1" name="dummy_name_6" value="dummy_value_6_1">
-                            <label for="dummy_id_6_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_6_2" name="dummy_name_6" value="dummy_value_6_2">
-                            <label for="dummy_id_6_2">ダミーCheck 2</label>
+                        画像相談
+                        <div id="control_panel_step_6_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_leather_type_1" name="dummy_name_6" value="dummy_value_6_1">
+                                <label for="panel_select_leather_type_1">なし</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_leather_type_2" name="dummy_name_6" value="dummy_value_6_2">
+                                <label for="panel_select_leather_type_2">ノーマル型</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="panel_select_leather_type_3" name="dummy_name_6" value="dummy_value_6_3">
+                                <label for="panel_select_leather_type_3">ワイド型</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_7" style="display: none;">
-                        ステップ7のコンテンツ（予定）
-                        <div>
-                            <input type="radio" id="dummy_id_7_1" name="dummy_name_7" value="dummy_value_7_1">
-                            <label for="dummy_id_7_1">ダミーCheck 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dummy_id_7_2" name="dummy_name_7" value="dummy_value_7_2">
-                            <label for="dummy_id_7_2">ダミーCheck 2</label>
+                        実装中（画像と配置どうするか相談）
+                        <div id="control_panel_step_7_select_list">
+                            <div>
+                                <input type="radio" id="panel_select_on_name_1" name="dummy_name_7" value="dummy_value_7_1">
+                                <label for="panel_select_on_name_1">ダミー</label>
+                            </div>
                         </div>
                     </div>
                     <div id="control_panel_step_8" style="display: none;">
-                        注意事項（予定）
-                        <div>
-                            <input type="checkbox" id="dummy_id_8_1" name="dummy_name_8" value="dummy_value_8_1">
-                            <label for="dummy_id_8_1">ダミー同意 1</label>
+                        以下の注意事項にご了承いただくことで楽天市場からご注文いただけます。
+                        <div id="control_panel_step_8_select_list">
+                            <div>
+                                <input type="checkbox" id="panel_select_agree_1" name="dummy_name_8" value="dummy_value_8_1">
+                                <label for="panel_select_agree_1">シミュレーションのカラーは独自に作成したもので、実際の色味と異なります。</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="panel_select_agree_2" name="dummy_name_8" value="dummy_value_8_2">
+                                <label for="panel_select_agree_2">キャンセル・返品・交換はお受け出来ません。</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="panel_select_agree_3" name="dummy_name_8" value="dummy_value_8_3">
+                                <label for="panel_select_agree_3">キャンセル・返品・交換はお受け出来ません。</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="panel_select_agree_4" name="dummy_name_8" value="dummy_value_8_4">
+                                <label for="panel_select_agree_4">オーダー納期は60日~80日が目安となっております。詳細な納期は追ってご連絡致します。</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="checkbox" id="dummy_id_8_2" name="dummy_name_8" value="dummy_value_8_2">
-                            <label for="dummy_id_8_2">ダミー同意 2</label>
+                        <br>
+                        <div id="final_caution_area" class="final-caution-area">
+                            「この内容で注文する」をクリックした跡は選択項目の変更はできません。ページに戻った場合も選択いただいた項目はリセットされますのでご了承下さい。
                         </div>
                     </div>
 

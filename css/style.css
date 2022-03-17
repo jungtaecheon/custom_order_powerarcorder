@@ -8,6 +8,11 @@ body {
     border-width: 0.1px;
 } */
 
+#debug_mode{
+    position:absolute;
+    z-index: 100;
+}
+
 /* シミュレーション コンテナ */
 .simulation-container{
     position: relative;

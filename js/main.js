@@ -1,3 +1,5 @@
+let debug_mode = false;
+
 // 現在のステップ
 let current_step = 1;
 // 一番進んだステップ
@@ -9,6 +11,21 @@ const original_color_parts_list = [10, 14, 15];
 const STEP_MAX_COUNT = 8;
 
 $(function() {
+    ////////////////////////
+    // 検証モード
+    ////////////////////////
+    $("#debug_mode").click(function () {
+        if(debug_mode){
+            debug_mode = false;
+            $("#debug_mode").text("検証モードにする");
+        }else{
+            debug_mode = true;
+            set_active_next_step_button('');
+            $("#next_step_button").prop("disabled", false);
+            $("#debug_mode").text("現在検証モードです");
+        }
+    });
+
     ////////////////////////
     // リアルタイム監視
     ////////////////////////
@@ -65,10 +82,10 @@ $(function() {
 
         // STEP8
         $("input[name='dummy_name_8']").click(function () {
-            let cnt_checked = $('#control_panel_step_8 input:checkbox:checked').length;
+            let cnt_checked = $('#control_panel_step_8_select_list input:checkbox:checked').length;
 
-            // TODO 同意が２つの場合はこんな感じ
-            if (cnt_checked == 2) {
+            // 同意事項4つを想定
+            if (cnt_checked == 4) {
                 clear_flug_arr_of_step[7] = true;
                 // 完了ボタン（活性）
                 set_active_submit_button();
@@ -259,21 +276,23 @@ $(function() {
      * @param step ボタンに表示するステップ番号（next step)
      */
     function set_disable_next_step_button(step){
-        $("#next_step_button").prop("disabled", true);
+        if(!debug_mode){
+            $("#next_step_button").prop("disabled", true);
 
-        $("#next_step_button").text(`STEP${step}に進む`);
-        $("#next_step_button").css({
-            'background-color':'#d8d8d8',
-            'padding-left':'10px',
-            'padding-right':'10px',
-        });
-        $("#next_step_button").hover(function() {
-            // カーソルが当たった時の処理
-            $(this).css("background-color", "#d8d8d8");
-        }, function() {
-            // カーソルが離れた時の処理
-            $(this).css("background-color", "#d8d8d8");
-        });
+            $("#next_step_button").text(`STEP${step}に進む`);
+            $("#next_step_button").css({
+                'background-color':'#d8d8d8',
+                'padding-left':'10px',
+                'padding-right':'10px',
+            });
+            $("#next_step_button").hover(function() {
+                // カーソルが当たった時の処理
+                $(this).css("background-color", "#d8d8d8");
+            }, function() {
+                // カーソルが離れた時の処理
+                $(this).css("background-color", "#d8d8d8");
+            });
+        }
     }
 
     /**
