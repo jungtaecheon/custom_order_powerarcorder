@@ -5,10 +5,10 @@ let current_step = 1;
 // 一番進んだステップ
 let max_progress_step = 1;
 // ステップごとのクリアフラグ（必須項目を埋めたか）
-let clear_flug_arr_of_step = [false, false, false, false, false, false, false, false];
+let clear_flug_arr_of_step = [false, false, false, false, false, false, false];
 
 const original_color_parts_list = [10, 14, 15];
-const STEP_MAX_COUNT = 8;
+const STEP_MAX_COUNT = 7;
 
 $(function() {
     ////////////////////////
@@ -32,6 +32,7 @@ $(function() {
 
     $(document).ready(function () {
         // STEP1
+        // 選択肢を一度でも押したら次のステップボタンを活性化（ラジオボタンのため）
         $("input[name='dummy_name_1']").click(function () {
             clear_flug_arr_of_step[0] = true;
             // 次のステップボタン（活性）
@@ -74,23 +75,17 @@ $(function() {
         });
 
         // STEP7
+        // すべての選択肢を押したら完了ボタンを活性化（チェックボックスのため）
         $("input[name='dummy_name_7']").click(function () {
-            clear_flug_arr_of_step[6] = true;
-            // 次のステップボタン（活性）
-            set_active_next_step_button(8);
-        });
-
-        // STEP8
-        $("input[name='dummy_name_8']").click(function () {
             let cnt_checked = $('#control_panel_step_8_select_list input:checkbox:checked').length;
 
             // 同意事項4つを想定
             if (cnt_checked == 4) {
-                clear_flug_arr_of_step[7] = true;
+                clear_flug_arr_of_step[6] = true;
                 // 完了ボタン（活性）
                 set_active_submit_button();
             } else {
-                clear_flug_arr_of_step[7] = false;
+                clear_flug_arr_of_step[6] = false;
                 // 完了ボタン（非活性）
                 set_disable_submit_button();
             }
@@ -116,6 +111,10 @@ $(function() {
         if(current_step < STEP_MAX_COUNT){
             // 押されたSTEPをactiveにする
             $(`#progressbar_step_${current_step}`).addClass('active');
+
+            // 次のSTEPに現在ステップにする
+            $(`#progressbar_step_${current_step}`).removeClass('current');
+            $(`#progressbar_step_${current_step+1}`).addClass('current');
 
             // current_stepを+1する
             current_step+=1;
@@ -147,9 +146,15 @@ $(function() {
         if( selected_step_num <= max_progress_step && selected_step_num != current_step ){
             alert(`STEP${selected_step_num}を表示します。`);
 
-            // current_step を 選択された stepに更新
+            // 1. current_stepから現在ステップを削除
+            $(`#progressbar_step_${current_step}`).removeClass('current');
+
+            // 2. current_step を 選択された stepに更新
             current_step = selected_step_num;
             control_view_by_selected_step(selected_step_num);
+
+            // 3. 更新されたcurrent_stepを現在ステップにセット
+            $(`#progressbar_step_${current_step}`).addClass('current');
 
         }else if( selected_step_num == current_step ){
             alert(`STEP${selected_step_num}は既に表示されております。`);
@@ -187,25 +192,22 @@ $(function() {
                 $("#control_panel_header").children('b').text('STEP1. 拳部');
                 break;
             case 2:
-                $("#control_panel_header").children('b').text('STEP2. タイプ');
+                $("#control_panel_header").children('b').text('STEP2. カラー選択');
                 break;
             case 3:
-                $("#control_panel_header").children('b').text('STEP3. カラー選択');
+                $("#control_panel_header").children('b').text('STEP3. サイズ');
                 break;
             case 4:
-                $("#control_panel_header").children('b').text('STEP4. サイズ');
+                $("#control_panel_header").children('b').text('STEP4. 指の長さ');
                 break;
             case 5:
-                $("#control_panel_header").children('b').text('STEP5. 指の長さ');
+                $("#control_panel_header").children('b').text('STEP5. 当て革の型');
                 break;
             case 6:
-                $("#control_panel_header").children('b').text('STEP6. 当て革の型');
+                $("#control_panel_header").children('b').text('STEP6. オンネーム');
                 break;
             case 7:
-                $("#control_panel_header").children('b').text('STEP7. オンネーム');
-                break;
-            case 8:
-                $("#control_panel_header").children('b').text('STEP8. 注意事項');
+                $("#control_panel_header").children('b').text('STEP7. 注意事項');
 
                 if(clear_flug_arr_of_step[step-1]){
                     // クリアされたステップだった場合
@@ -236,11 +238,11 @@ $(function() {
     }
 
     /**
-     * current_stepが3以外の場合、parts_selectorを非表示にする
+     * current_stepが2（カラー選択）以外の場合、parts_selectorを非表示にする
      *
      */
     function display_none_parts_selector_without_step3(step){
-        if(step === 3){
+        if(step === 2){
             $("#glove_parts_selector").show();
         }else{
             $("#glove_parts_selector").hide();

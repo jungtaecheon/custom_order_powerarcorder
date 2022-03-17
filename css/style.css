@@ -168,6 +168,10 @@ body {
 .progressbar li.active + li:after {
     background-color: #55b776;
 }
+.progressbar li.current:before {
+    background-color: #f6f87b;
+    color: rgb(85, 85, 85);
+}
 
 .parts-selector-img {
     width: 100%;
