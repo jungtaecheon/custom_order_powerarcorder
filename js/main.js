@@ -178,7 +178,7 @@ $(function() {
         display_none_control_panel_without_step(step);
         display_none_parts_selector_without_step3(step);
 
-        if(clear_flug_arr_of_step[step-1]){
+        if(clear_flug_arr_of_step[step-1] || debug_mode){
             //クリアされたステップだった場合
             // 次のステップボタン（活性化）
             set_active_next_step_button(step+1);
