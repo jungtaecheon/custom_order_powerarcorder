@@ -68,6 +68,7 @@ body {
     top: 0px;
     right: 10px;
     overflow: scroll;
+    padding: 10px;
 }
 
 /* インプットパネル コンテナ */
@@ -97,6 +98,7 @@ body {
     position: relative;
     height: 100%;
     background-color: #F6F1EE;
+    overflow: scroll;
 }
 
 .next-step-button {
@@ -176,13 +178,125 @@ body {
 .parts-selector-img {
     width: 100%;
     background-color: #f0f0f0;
+    border-radius: 20%;
+    border: 1px solid #cecece;
+}
+
+.glove-parts-selector img.current {
+    background-color: #f6f87b;
 }
 
 .parts-selector-img:hover {
-    opacity: 0.5;
+    /* background-color: #dddddd; */
+    opacity: 0.8;
     cursor: pointer;
 }
 
+/*
+ * control-panel
+ */
+input[type="radio"]{
+    display: none;
+}
+
+.control-panel-step{
+    padding: 10px;
+    overflow: scroll;
+}
+
+.control-panel-explain{
+    position: relative;
+    margin-top: 30px;
+    font-size: 12px;
+    color:#707070;
+    margin: 10px;
+}
+
+/* STEP1 */
+.control-panel-step-1-select-list{
+    display: flex;
+    width: 100%;
+}
+
+.control-panel-select-item-label-step1{
+    margin: 10px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: #dddddd;
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.control-panel-select-item-label-step1:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
+
+.panel-select-palm-material-img{
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.panel-select-palm-material-img-tag{
+    margin: 0;
+    position: relative;
+}
+
+/* STEP2 */
+.control-panel-step-2-select-list{
+    position: relative;
+    display: flex;
+    flex-wrap : wrap;
+}
+
+.control-panel-select-item-label-step2{
+    position: relative;
+    background-color: #dddddd;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    width: 80px;
+    margin: 3px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin: 5px;
+}
+
+.control-panel-select-item-label-step2:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
+
+.select-circle{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    top: 40%;
+    left: 50%;
+    transform: translateY(-40%) translateX(-50%);
+    -webkit-transform: translateY(-40%) translateX(-50%);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5)inset;
+}
+
+.select-circle-tag{
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+.step-2-title-div{
+    position: relative;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+}
 
 @media (max-width: 700px) {
 /* @media (max-width: 768px) { */
@@ -198,8 +312,8 @@ body {
     .control-panel-container{
         position: relative;
         width: 100vw;
-        /* height: auto; */
-        height: 30vh;
+        height: auto;
+        /* height: 30vh; */
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
         transition: all 500ms ease;
@@ -220,7 +334,6 @@ body {
 
     .parts-selector-img {
         height: 100%;
-        float: left;
         width: auto;
         background-color: #f0f0f0;
         margin-right: 10px;
@@ -254,13 +367,42 @@ body {
         width: 11%;
     }
 
+    /* control-panel */
+    /* STEP2 */
+    .control-panel-step-2-select-list{
+        flex-wrap : nowrap;
+    }
+
+    .control-panel-select-item-label-step2{
+        flex-shrink: 0; /* 潰れないように */
+        width: 80px;
+    }
 }
 
+.color-white{background-color: #FFF}
+.color-black{background-color:#222}
+.color-red{background-color:#af1616}
+.color-mred{background-color:#af1616}
+.color-navy{background-color:#292f42}
+.color-mnavy{background-color:#292f42}
+.color-blue{background-color:#0c3c75}
+.color-silver{background-color:#EEE}
+.color-gold{background-color:#ccb35f}
+.color-lime{background-color:#b7f750}
+.color-gray{background-color:#807e7e}
+.color-green{background-color:#018001}
+.color-yellow{background-color:#faea3c}
+.color-orange{background-color:#e94f02}
+.color-pink{background-color:#f873ad}
+.color-purple{background-color:#6e3796}
+.color-skyblue{background-color: #2f9dcf;}
 
 .parts-color-white{fill: #FFF}
 .parts-color-black{fill:#222}
 .parts-color-red{fill:#af1616}
+.parts-color-mred{fill:#af1616}
 .parts-color-navy{fill:#292f42}
+.parts-color-mnavy{fill:#292f42}
 .parts-color-blue{fill:#0c3c75}
 .parts-color-silver{fill:#EEE}
 .parts-color-gold{fill:#ccb35f}

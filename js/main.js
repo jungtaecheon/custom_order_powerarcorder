@@ -2,13 +2,18 @@ let debug_mode = false;
 
 // 現在のステップ
 let current_step = 1;
+// 現在のカラーステップ
+let current_color_step = 1;
 // 一番進んだステップ
 let max_progress_step = 1;
 // ステップごとのクリアフラグ（必須項目を埋めたか）
 let clear_flug_arr_of_step = [false, false, false, false, false, false, false];
+// カラー選択のクリア数
+let clear_flug_arr_of_color_step = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 const original_color_parts_list = [10, 14, 15];
 const STEP_MAX_COUNT = 7;
+const COLOR_STEP_MAX_COUNT = 16;
 
 $(function() {
     ////////////////////////
@@ -33,17 +38,52 @@ $(function() {
     $(document).ready(function () {
         // STEP1
         // 選択肢を一度でも押したら次のステップボタンを活性化（ラジオボタンのため）
-        $("input[name='dummy_name_1']").click(function () {
+        $(".control-panel-select-item-label-step1").click(function () {
             clear_flug_arr_of_step[0] = true;
             // 次のステップボタン（活性）
             set_active_next_step_button(2);
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-label-step1").css('background-color','#dddddd');
+            $(".control-panel-select-item-label-step1").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
         });
 
         // STEP2
-        $("input[name='dummy_name_2']").click(function () {
-            clear_flug_arr_of_step[1] = true;
-            // 次のステップボタン（活性）
-            set_active_next_step_button(3);
+        $(".control-panel-select-item-label-step2").click(function () {
+
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace(`panel_select_color_${current_color_step}_`,'');
+
+            // current_color_stepを元にclear_flug_arr_of_color_stepを更新（ラジオボタンなので即有効にする）
+            clear_flug_arr_of_color_step[current_color_step-1] = true;
+
+            // color- で始まるclassすべて削除
+            $(`#parts_selector_${current_color_step}`).removeClass (function (index, css) {
+                return (css.match (/\bcolor-\S+/g) || []).join(' ');
+            });
+            // 選択した色をパーツセレクターの背景にセット
+            $(`#parts_selector_${current_color_step}`).addClass('color-'+selected_color);
+
+            // 新しい選択肢が選択されたら、そのステップ内の選択肢全体を非活性化する
+            $(`#control_panel_step_2_${current_color_step}_select_list`).children(".control-panel-select-item-label-step2").css('background-color','#dddddd');
+            $(`#control_panel_step_2_${current_color_step}_select_list`).children(".control-panel-select-item-label-step2").css('color','#000');
+            // そして、選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
+
+            // シミュレーターに反映
+            set_simulator_by_current_color_step(current_color_step, selected_color);
+
+            // すべてtrueになっていたら
+            if ( !clear_flug_arr_of_color_step.includes(false) ) {
+                clear_flug_arr_of_step[1] = true;
+                // 次のステップボタン（活性）
+                set_active_next_step_button(3);
+            }
         });
 
         // STEP3
@@ -162,6 +202,17 @@ $(function() {
         }else{
             alert(`まだ、STEP${selected_step_num-1}まで完了しておりません。`);
         }
+    });
+
+
+    ////////////////////////
+    // カラーSTEPが押されたら
+    ////////////////////////
+    $(".parts-selector-img").on('click', function() {
+        // 選択されたパーツ画像からカラーステップを抽出
+        current_color_step = Number( $(this).attr('id').replace('parts_selector_','') );
+        // カラーステップに応じてビューを制御
+        control_view_color_select(current_color_step);
     });
 
 
@@ -342,4 +393,160 @@ $(function() {
             $(this).css("background-color", "#d8d8d8");
         });
     }
+
+    /**
+     * 選択されたカラーステップに応じて画面を制御
+     *
+     * @param {*} color_step 表示すべきカラー選択のステップ
+     */
+    function control_view_color_select(color_step){
+
+        // 該当のカラーステップ以外は非表示
+        display_none_color_select_without_color_step(color_step);
+
+        $(".parts-selector-img").removeClass('current');
+        $(`#parts_selector_${color_step}`).addClass('current');
+
+        switch (color_step) {
+            case 1:
+                $("#step_2_title").text('1. 拳部');
+                break;
+            case 2:
+                $("#step_2_title").text('2. 甲部飾り1');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 3:
+                $("#step_2_title").text('3. 甲部飾り2');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 4:
+                $("#step_2_title").text('4. 甲部飾り3');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 5:
+                $("#step_2_title").text('5. 甲部飾り4');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 6:
+                $("#step_2_title").text('6. 甲部飾り5');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 7:
+                $("#step_2_title").text('7. 甲部飾り6');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 8:
+                $("#step_2_title").text('8. 甲部飾り7');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 9:
+                $("#step_2_title").text('9. 指マチ');
+                break;
+            case 10:
+                $("#step_2_title").text('10. シリコーン');
+                break;
+            case 11:
+                $("#step_2_title").text('11. ニット1');
+                break;
+            case 12:
+                $("#step_2_title").text('12. ニット2');
+                break;
+            case 13:
+                $("#step_2_title").text('13. 手首ベルト部');
+                $("#control_panel_explain_span").text('M.ネイビー、M.レッド、シルバー、ゴールドはマット調のエナメル素材になります。');
+                break;
+            case 14:
+                $("#step_2_title").text('14. パイピング');
+                break;
+            case 15:
+                $("#step_2_title").text('15. 袖ゴム');
+                $("#control_panel_explain_span").text('ラインカラーはすべてゴールドになります。');
+                break;
+            case 16:
+                $("#step_2_title").text('16. 甲飾りステッチ');
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 該当カラーステップ以外は非表示にする
+     *
+     */
+    function display_none_color_select_without_color_step(color_step){
+        for(var i=1; i<=COLOR_STEP_MAX_COUNT; i++){
+            if(color_step === i){
+                $(`#control_panel_step_2_${i}_select_list`).show();
+            }else{
+                $(`#control_panel_step_2_${i}_select_list`).hide();
+            }
+        }
+    }
+
+    /**
+     * カラーステップと色に合わせて、シミュレーターに反映
+     *
+     * @param {*} color_step カラーステップ（色を変える箇所）
+     * @param {*} selected_color 選択された色
+     */
+    function set_simulator_by_current_color_step(color_step, selected_color){
+        switch (color_step) {
+            case 1:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+
+                $(`#glove_palm_parts_${color_step}`).removeClass();
+                $(`#glove_palm_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            case 2:
+            case 3:
+            case 4:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            case 5:
+            case 6:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+
+                $(`#glove_palm_parts_${color_step}`).removeClass();
+                $(`#glove_palm_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            case 7:
+            case 8:
+            case 9:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            case 10:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-10-color-'+selected_color);
+                break;
+            case 11:
+            case 12:
+            case 13:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            case 14:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-14-color-'+selected_color);
+                break;
+            case 15:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-15-color-'+selected_color);
+
+                $(`#glove_palm_parts_${color_step}`).removeClass();
+                $(`#glove_palm_parts_${color_step}`).addClass('parts-15-color-'+selected_color);
+                break;
+            case 16:
+                $(`#glove_parts_${color_step}`).removeClass();
+                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                break;
+            default:
+                break;
+        }
+    }
+
 });
