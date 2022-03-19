@@ -67,6 +67,7 @@ $(function() {
             });
             // 選択した色をパーツセレクターの背景にセット
             $(`#parts_selector_${current_color_step}`).addClass('color-'+selected_color);
+            $(`#parts_selector_${current_color_step}`).addClass('clear');
 
             // 新しい選択肢が選択されたら、そのステップ内の選択肢全体を非活性化する
             $(`#control_panel_step_2_${current_color_step}_select_list`).children(".control-panel-select-item-label-step2").css('background-color','#dddddd');
@@ -87,24 +88,48 @@ $(function() {
         });
 
         // STEP3
-        $("input[name='dummy_name_3']").click(function () {
+        $(".control-panel-select-item-label-step3").click(function () {
             clear_flug_arr_of_step[2] = true;
             // 次のステップボタン（活性）
             set_active_next_step_button(4);
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-label-step3").css('background-color','#dddddd');
+            $(".control-panel-select-item-label-step3").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
         });
 
         // STEP4
-        $("input[name='dummy_name_4']").click(function () {
+        $(".control-panel-select-item-label-step4").click(function () {
             clear_flug_arr_of_step[3] = true;
             // 次のステップボタン（活性）
             set_active_next_step_button(5);
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-label-step4").css('background-color','#dddddd');
+            $(".control-panel-select-item-label-step4").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
         });
 
         // STEP5
-        $("input[name='dummy_name_5']").click(function () {
+        $(".control-panel-select-item-label-step5").click(function () {
             clear_flug_arr_of_step[4] = true;
             // 次のステップボタン（活性）
             set_active_next_step_button(6);
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-label-step5").css('background-color','#dddddd');
+            $(".control-panel-select-item-label-step5").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
         });
 
         // STEP6
@@ -184,7 +209,7 @@ $(function() {
 
         // 選択したステップが max_progress_step の範囲内、かつ、current_stepでなければ表示する
         if( selected_step_num <= max_progress_step && selected_step_num != current_step ){
-            alert(`STEP${selected_step_num}を表示します。`);
+            // alert(`STEP${selected_step_num}を表示します。`);
 
             // 1. current_stepから現在ステップを削除
             $(`#progressbar_step_${current_step}`).removeClass('current');
@@ -197,7 +222,7 @@ $(function() {
             $(`#progressbar_step_${current_step}`).addClass('current');
 
         }else if( selected_step_num == current_step ){
-            alert(`STEP${selected_step_num}は既に表示されております。`);
+            // alert(`STEP${selected_step_num}は既に表示されております。`);
 
         }else{
             alert(`まだ、STEP${selected_step_num-1}まで完了しておりません。`);

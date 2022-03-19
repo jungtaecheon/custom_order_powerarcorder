@@ -1015,98 +1015,100 @@
                     </div>
 
                     <!-- STEP3 -->
-                    <div id="control_panel_step_3" style="display: none;">
-                        <div id="control_panel_step_3_select_list">
-                            <div>
-                                <input type="radio" id="panel_select_size_1" name="dummy_name_3" value="dummy_value_3_1">
-                                <label for="panel_select_size_1">21cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_2" name="dummy_name_3" value="dummy_value_3_2">
-                                <label for="panel_select_size_2">22cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_3" name="dummy_name_3" value="dummy_value_3_3">
-                                <label for="panel_select_size_3">23cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_4" name="dummy_name_3" value="dummy_value_3_4">
-                                <label for="panel_select_size_4">24cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_5" name="dummy_name_3" value="dummy_value_3_5">
-                                <label for="panel_select_size_5">25cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_6" name="dummy_name_3" value="dummy_value_3_6">
-                                <label for="panel_select_size_6">26cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_7" name="dummy_name_3" value="dummy_value_3_7">
-                                <label for="panel_select_size_7">27cm</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_size_8" name="dummy_name_3" value="dummy_value_3_8">
-                                <label for="panel_select_size_8">28cm</label>
-                            </div>
+                    <div class="control-panel-step" id="control_panel_step_3" style="display: none;">
+                        <div class="control-panel-step-3-select-list" id="control_panel_step_3_select_list">
+                            <!-- ラジオボタンは非表示 -->
+                            <input type="radio" id="panel_select_size_1" name="dummy_name_3" value="dummy_value_3_1">
+                            <input type="radio" id="panel_select_size_2" name="dummy_name_3" value="dummy_value_3_2">
+                            <input type="radio" id="panel_select_size_3" name="dummy_name_3" value="dummy_value_3_3">
+                            <input type="radio" id="panel_select_size_4" name="dummy_name_3" value="dummy_value_3_4">
+                            <input type="radio" id="panel_select_size_5" name="dummy_name_3" value="dummy_value_3_5">
+                            <input type="radio" id="panel_select_size_6" name="dummy_name_3" value="dummy_value_3_6">
+                            <input type="radio" id="panel_select_size_7" name="dummy_name_3" value="dummy_value_3_7">
+                            <input type="radio" id="panel_select_size_8" name="dummy_name_3" value="dummy_value_3_8">
+
+                            <!-- labelをラジオボタンに紐付ける -->
+                            <label for="panel_select_size_1" class="control-panel-select-item-label-step3">21cm</label>
+                            <label for="panel_select_size_2" class="control-panel-select-item-label-step3">22cm</label>
+                            <label for="panel_select_size_3" class="control-panel-select-item-label-step3">23cm</label>
+                            <label for="panel_select_size_4" class="control-panel-select-item-label-step3">24cm</label>
+                            <label for="panel_select_size_5" class="control-panel-select-item-label-step3">25cm</label>
+                            <label for="panel_select_size_6" class="control-panel-select-item-label-step3">26cm</label>
+                            <label for="panel_select_size_7" class="control-panel-select-item-label-step3">27cm</label>
+                            <label for="panel_select_size_8" class="control-panel-select-item-label-step3">28cm</label>
                         </div>
                     </div>
 
                     <!-- STEP4 -->
-                    <div id="control_panel_step_4" style="display: none;">
-                        ※指の長さはS、M、L以外の特殊なパターンは できません。
-                        <div id="control_panel_step_4_select_list">
-                            <div>
-                                <input type="radio" id="panel_select_finger_size_1" name="dummy_name_4" value="dummy_value_4_1">
-                                <label for="panel_select_finger_size_1">S (定番型より3mm短い)</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_finger_size_2" name="dummy_name_4" value="dummy_value_4_2">
-                                <label for="panel_select_finger_size_2">M (定番型)</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_finger_size_3" name="dummy_name_4" value="dummy_value_4_3">
-                                <label for="panel_select_finger_size_3">L (定番型より3mm長い)</label>
-                            </div>
+                    <div class="control-panel-step" id="control_panel_step_4" style="display: none;">
+                        <div class="control-panel-step-4-select-list" id="control_panel_step_4_select_list">
+                            <!-- ラジオボタンは非表示 -->
+                            <input type="radio" id="panel_select_finger_size_1" name="dummy_name_4" value="dummy_value_4_1">
+                            <input type="radio" id="panel_select_finger_size_2" name="dummy_name_4" value="dummy_value_4_2">
+                            <input type="radio" id="panel_select_finger_size_3" name="dummy_name_4" value="dummy_value_4_3">
+
+                            <!-- labelをラジオボタンに紐付ける -->
+                            <label for="panel_select_finger_size_1" class="control-panel-select-item-label-step4">
+                                <p class="panel_select_finger_size">S</p>
+                                <p class="panel_select_finger_size_explain">定番型より3mm短い</p>
+                            </label>
+                            <label for="panel_select_finger_size_2" class="control-panel-select-item-label-step4">
+                                <p class="panel_select_finger_size">M</p>
+                                <p class="panel_select_finger_size_explain">定番型</p>
+                            </label>
+                            <label for="panel_select_finger_size_3" class="control-panel-select-item-label-step4">
+                                <p class="panel_select_finger_size">L</p>
+                                <p class="panel_select_finger_size_explain">定番型より3mm長い</p>
+                            </label>
+                        </div>
+
+                        <div class="control-panel-explain">
+                            <span>指の長さはS、M、L以外の特殊なパターンは できません。</span>
                         </div>
                     </div>
 
                     <!-- STEP5 -->
-                    <div id="control_panel_step_5" style="display: none;">
-                        画像相談
-                        <div id="control_panel_step_5_select_list">
-                            <div>
-                                <input type="radio" id="panel_select_leather_type_1" name="dummy_name_5" value="dummy_value_5_1">
-                                <label for="panel_select_leather_type_1">なし</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_leather_type_2" name="dummy_name_5" value="dummy_value_5_2">
-                                <label for="panel_select_leather_type_2">ノーマル型</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="panel_select_leather_type_3" name="dummy_name_5" value="dummy_value_5_3">
-                                <label for="panel_select_leather_type_3">ワイド型</label>
-                            </div>
+                    <div class="control-panel-step" id="control_panel_step_5" style="display: none;">
+                        <div class="control-panel-step-5-select-list" id="control_panel_step_5_select_list">
+                            <!-- ラジオボタンは非表示 -->
+                            <input type="radio" id="panel_select_leather_type_1" name="dummy_name_5" value="dummy_value_5_1">
+                            <input type="radio" id="panel_select_leather_type_2" name="dummy_name_5" value="dummy_value_5_2">
+                            <input type="radio" id="panel_select_leather_type_3" name="dummy_name_5" value="dummy_value_5_3">
+
+                            <!-- labelをラジオボタンに紐付ける -->
+                            <label for="panel_select_leather_type_1" class="control-panel-select-item-label-step5">
+                                <img class="panel-select-leather-type-img" src="img/leather_type_none.png">
+                                <p class="panel-select-leather-type-img-tag">なし</p>
+                            </label>
+                            <label for="panel_select_leather_type_2" class="control-panel-select-item-label-step5">
+                                <img class="panel-select-leather-type-img" src="img/leather_type_normal.png">
+                                <p class="panel-select-leather-type-img-tag">ノーマル型</p>
+                            </label>
+                            <label for="panel_select_leather_type_3" class="control-panel-select-item-label-step5">
+                                <img class="panel-select-leather-type-img" src="img/leather_type_wide.png">
+                                <p class="panel-select-leather-type-img-tag">ワイド型</p>
+                            </label>
                         </div>
                     </div>
 
                     <!-- STEP6 -->
-                    <div id="control_panel_step_6" style="display: none;">
-                        実装中（画像と配置どうするか相談）<br>
+                    <div class="control-panel-step" id="control_panel_step_6" style="display: none;">
+                        <!-- 準備中<br>
                         ※色見本は印刷技術上、現物と多少異なる場合があります。<br>
                         ●上記以外のカラー、また複雑な色の組み合わせはできません。<br>
                         ●オンネーム位置は手首ベルト部上のみです。<br>
                         ●左右で文字・カラーを変える場合は、片手オーダーで左右それぞれを指定してください。<br>
                         ●文字以外の記号は「.」「,」のみの対応になります。「.」「,」も1文字に数えます。<br>
-                        *注意:高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。<br>
+                        *注意:高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。<br> -->
                         <div id="control_panel_step_6_select_list">
                             <div>
-                                <input type="radio" id="panel_select_on_name_1" name="dummy_name_6" value="dummy_value_6_1">
-                                <label for="panel_select_on_name_1">ダミー</label>
+                                <input style="display: block" type="radio" id="panel_select_on_name_1" name="dummy_name_6" value="dummy_value_6_1">
+                                <label for="panel_select_on_name_1">準備中</label>
                             </div>
                         </div>
                     </div>
                     <div id="control_panel_step_7" style="display: none;">
+                        準備中<br><br>
                         以下の注意事項にご了承いただくことで楽天市場からご注文いただけます。
                         <div id="control_panel_step_7_select_list">
                             <div>
@@ -1128,7 +1130,7 @@
                         </div>
                         <br>
                         <div id="final_caution_area" class="final-caution-area">
-                            「この内容で注文する」をクリックした跡は選択項目の変更はできません。ページに戻った場合も選択いただいた項目はリセットされますのでご了承下さい。
+                            「この内容で注文する」をクリックした後は選択項目の変更はできません。ページに戻った場合も選択いただいた項目はリセットされますのでご了承下さい。
                         </div>
                     </div>
 
