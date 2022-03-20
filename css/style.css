@@ -243,6 +243,10 @@ input[type="radio"]{
     margin: 10px;
 }
 
+.control-panel-explain-list{
+    padding: 0;
+}
+
 /* STEP1 */
 .control-panel-step-1-select-list{
     display: flex;

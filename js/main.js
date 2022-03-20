@@ -444,6 +444,7 @@ $(function() {
         switch (color_step) {
             case 1:
                 $("#step_2_title").text('1. 拳部');
+                $("#control_panel_explain_span").text('');
                 break;
             case 2:
                 $("#step_2_title").text('2. 甲部飾り1');
@@ -475,15 +476,19 @@ $(function() {
                 break;
             case 9:
                 $("#step_2_title").text('9. 指マチ');
+                $("#control_panel_explain_span").text('');
                 break;
             case 10:
                 $("#step_2_title").text('10. シリコーン');
+                $("#control_panel_explain_span").text('');
                 break;
             case 11:
                 $("#step_2_title").text('11. ニット1');
+                $("#control_panel_explain_span").text('');
                 break;
             case 12:
                 $("#step_2_title").text('12. ニット2');
+                $("#control_panel_explain_span").text('');
                 break;
             case 13:
                 $("#step_2_title").text('13. 手首ベルト部');
@@ -491,6 +496,7 @@ $(function() {
                 break;
             case 14:
                 $("#step_2_title").text('14. パイピング');
+                $("#control_panel_explain_span").text('');
                 break;
             case 15:
                 $("#step_2_title").text('15. 袖ゴム');
@@ -498,8 +504,10 @@ $(function() {
                 break;
             case 16:
                 $("#step_2_title").text('16. 甲飾りステッチ');
+                $("#control_panel_explain_span").text('');
                 break;
             default:
+                $("#control_panel_explain_span").text('');
                 break;
         }
     }
