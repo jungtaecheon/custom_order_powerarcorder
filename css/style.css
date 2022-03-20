@@ -15,11 +15,6 @@ body {
 } */
 
 /* モーダル */
-.content{
-    z-index: 100;
-    margin: 0 auto;
-    padding: 40px;
-}
 .modal{
     display: none;
     height: 100vh;
@@ -473,7 +468,7 @@ input[type="radio"]{
     }
 
     .glove-parts-selector{
-        width: 95vw;
+        width: 90vw;
         height: 80px;
         position: relative;
         display: flex;
