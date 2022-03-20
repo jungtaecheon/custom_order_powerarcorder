@@ -71,12 +71,15 @@ $(function() {
         // STEP2
         $(".control-panel-select-item-label-step2").click(function () {
 
-            if($(this).attr('id') == 'white_glove_color_label'){
-                // シリコーンの色が白に選択されたときのみ、手袋を白に変更する
-                $(".glove-simulation").css('background-image', 'url(img/grove-white.png)');
-            } else {
-                $(".glove-simulation").css('background-image', 'url(img/grove.png)');
-            }
+            // 2-10のみ特殊（手袋自体の色を白に変える必要あり）
+            $(`#control_panel_step_2_10_select_list`).children(".control-panel-select-item-label-step2").click(function(){
+                if($(this).attr('id') == 'white_glove_color_label'){
+                    // シリコーンの色が白に選択されたときのみ、手袋を白に変更する
+                    $(".glove-simulation").css('background-image', 'url(img/grove-white.png)');
+                } else {
+                    $(".glove-simulation").css('background-image', 'url(img/grove.png)');
+                }
+            });
 
             // labelから選択されたカラーを抽出
             let selected_color = $(this).attr('for').replace(`panel_select_color_${current_color_step}_`,'');
@@ -92,7 +95,7 @@ $(function() {
             $(`#parts_selector_${current_color_step}`).addClass('color-'+selected_color);
             $(`#parts_selector_${current_color_step}`).addClass('clear');
 
-            // 新しい選択肢が選択されたら、そのステップ内の選択肢全体を非活性化する
+            // 新しい選択肢が選択されたら、そのカラーステップ内の選択肢全体を非活性化する
             $(`#control_panel_step_2_${current_color_step}_select_list`).children(".control-panel-select-item-label-step2").css('background-color','#dddddd');
             $(`#control_panel_step_2_${current_color_step}_select_list`).children(".control-panel-select-item-label-step2").css('color','#000');
             // そして、選択されたものだけを活性化

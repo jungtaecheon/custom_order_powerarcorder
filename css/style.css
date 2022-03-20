@@ -54,7 +54,7 @@ body {
 }
 
 .glove-simulation{
-    background-image:url(../img/grove.png);
+    background-image:url(../img/grove-white.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 80%;
@@ -597,7 +597,7 @@ input[type="radio"]{
 .color-purple{background-color:#6e3796}
 .color-skyblue{background-color: #2f9dcf;}
 
-.parts-color-white{fill: #FFF}
+.parts-color-white{fill: #FFF;}
 .parts-color-black{fill:#222}
 .parts-color-red{fill:#af1616}
 .parts-color-mred{fill:#af1616}
