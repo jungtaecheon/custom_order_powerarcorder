@@ -591,7 +591,7 @@ $(function() {
                 break;
             case 16:
                 $(`#glove_parts_${color_step}`).removeClass();
-                $(`#glove_parts_${color_step}`).addClass('parts-color-'+selected_color);
+                $(`#glove_parts_${color_step}`).addClass('parts-16-color-'+selected_color);
                 break;
             default:
                 break;

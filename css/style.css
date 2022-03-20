@@ -642,5 +642,103 @@ input[type="radio"]{
 .parts-15-color-red{fill:#af1616}
 .parts-15-color-blue{fill:#1f2250;}
 
-/* ステッチ（固定） */
+/* ステッチ */
+.parts-16-color-white{
+    stroke:#FFF;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-black{
+    stroke:#222;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-red{
+    stroke:#af1616;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-navy{
+    stroke:#292f42;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-blue{
+    stroke:#0c3c75;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-green{
+    stroke:#018001;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-yellow{
+    stroke:#faea3c;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-orange{
+    stroke:#e94f02;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-pink{
+    stroke:#f873ad;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-purple{
+    stroke:#6e3796;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-silver{
+    stroke:#EEE;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+.parts-16-color-gold{
+    stroke:#ccb35f;
+    fill:none;
+    stroke-width:2px;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+    stroke-dasharray:4.9862,4.9862;
+}
+
+/* 袖ゴムのライン */
 .parts-17-color-gold{fill:#f3e95f;}
