@@ -1,3 +1,4 @@
+// debugは削除予定
 let debug_mode = false;
 
 // 現在のステップ
@@ -17,7 +18,22 @@ const COLOR_STEP_MAX_COUNT = 16;
 
 $(function() {
     ////////////////////////
-    // 検証モード
+    // 初期処理
+    ////////////////////////
+
+    // selectorは表示しない（最初からcssにdisplay:noneを指定すると、横スクロールに問題があったため、ここで制御する）
+    // $("#glove_parts_selector").hide();
+    display_none_control_panel_without_step(1);
+
+    // 初回モーダル表示
+    $('.js-modal').fadeIn();
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+
+    ////////////////////////
+    // 検証モード 削除予定
     ////////////////////////
     $("#debug_mode").click(function () {
         if(debug_mode){
@@ -27,7 +43,7 @@ $(function() {
             debug_mode = true;
             set_active_next_step_button('');
             $("#next_step_button").prop("disabled", false);
-            $("#debug_mode").text("現在検証モードです");
+            $("#debug_mode").text("検証モード中");
         }
     });
 
@@ -159,15 +175,6 @@ $(function() {
 
 
     ////////////////////////
-    // 初期処理
-    ////////////////////////
-
-    // selectorは表示しない（最初からcssにdisplay:noneを指定すると、横スクロールに問題があったため、ここで制御する）
-    $("#glove_parts_selector").hide();
-    display_none_control_panel_without_step(1);
-
-
-    ////////////////////////
     // 次のステップが押されたら
     ////////////////////////
 
@@ -254,6 +261,7 @@ $(function() {
         display_none_control_panel_without_step(step);
         display_none_parts_selector_without_step3(step);
 
+        // debugは削除予定
         if(clear_flug_arr_of_step[step-1] || debug_mode){
             //クリアされたステップだった場合
             // 次のステップボタン（活性化）
@@ -354,6 +362,7 @@ $(function() {
      * @param step ボタンに表示するステップ番号（next step)
      */
     function set_disable_next_step_button(step){
+        // debugは削除予定
         if(!debug_mode){
             $("#next_step_button").prop("disabled", true);
 

@@ -9,9 +9,6 @@
 
     </head>
     <body>
-        <button id="debug_mode">検証モードにする</button>
-        <!-- TODO こちらの商品は両手用のカスタムオーダー製品となります。（pop up） -->
-
         <div class="simulation-container" id="simulation_container">
             <div class="glove-simulation" id="glove_simulation">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -195,7 +192,7 @@
             </div>
         </div>
 
-        <form method="get" action="./index.html" target="_blank" class="cart" accept-charset="EUC-JP">
+        <form method="post" action="./index.html" target="_blank" class="cart" accept-charset="EUC-JP">
 
             <div class="progress-status-area" id="progress_status_area">
                 <ul id="progressbar" class="progressbar">
@@ -1137,6 +1134,19 @@
                 </div>
             </div>
         </form>
+
+        <!-- デバッグ 削除予定 -->
+        <button id="debug_mode" style="font-size: 10px;">検証モードにする</button>
+
+        <!-- モーダル -->
+        <div class="modal js-modal">
+            <div class="modal__bg js-modal-close"></div>
+            <div class="modal__content">
+                <p>こちらの商品は「両手用」のカスタムオーダー製品となります。</p>
+                <a style="float: right;" class="js-modal-close" href="">続ける</a>
+                <a href="#" onclick="window.history.back();">直前のページに戻る</a>
+            </div><!--modal__inner-->
+        </div><!--modal-->
 
     </body>
 
