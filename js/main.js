@@ -71,6 +71,13 @@ $(function() {
         // STEP2
         $(".control-panel-select-item-label-step2").click(function () {
 
+            if($(this).attr('id') == 'white_glove_color_label'){
+                // シリコーンの色が白に選択されたときのみ、手袋を白に変更する
+                $(".glove-simulation").css('background-image', 'url(img/grove-white.png)');
+            } else {
+                $(".glove-simulation").css('background-image', 'url(img/grove.png)');
+            }
+
             // labelから選択されたカラーを抽出
             let selected_color = $(this).attr('for').replace(`panel_select_color_${current_color_step}_`,'');
 
