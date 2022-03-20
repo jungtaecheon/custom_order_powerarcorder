@@ -210,7 +210,7 @@ $(function() {
             }
         }else{
             // TODO 完了を押した場合
-            alert('開発中');
+            alert('準備中');
             // buttonをtype=submitにする
             $('#next_step_button').attr('type', 'submit');
         }
