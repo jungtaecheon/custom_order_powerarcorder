@@ -38,12 +38,12 @@ $(function() {
     $("#debug_mode").click(function () {
         if(debug_mode){
             debug_mode = false;
-            $("#debug_mode").text("検証モードにする");
+            $("#debug_mode").text("進むボタン有効モード");
         }else{
             debug_mode = true;
             set_active_next_step_button('');
             $("#next_step_button").prop("disabled", false);
-            $("#debug_mode").text("検証モード中");
+            $("#debug_mode").text("有効モード中");
         }
     });
 
@@ -242,7 +242,8 @@ $(function() {
             // alert(`STEP${selected_step_num}は既に表示されております。`);
 
         }else{
-            alert(`まだ、STEP${selected_step_num-1}まで完了しておりません。`);
+            // alert(`まだSTEP${selected_step_num-1}まで完了しておりません。`);
+            alert(`先にSTEP${current_step}を完了して下さい。`);
         }
     });
 
@@ -513,7 +514,7 @@ $(function() {
                 $("#control_panel_explain_span").text('ラインカラーはすべてゴールドになります。');
                 break;
             case 16:
-                $("#step_2_title").text('16. 甲飾りステッチ');
+                $("#step_2_title").text('16. 甲飾りステッチ（縫い目）');
                 $("#control_panel_explain_span").text('');
                 break;
             default:
