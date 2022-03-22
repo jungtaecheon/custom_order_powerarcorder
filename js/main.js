@@ -183,6 +183,24 @@ $(function() {
         });
     });
 
+    ////////////////////////
+    // 前に戻るボタンが押されたら
+    ////////////////////////
+    $('#back_step_button').on('click', function() {
+        // current_step が１より大きい場合のみ実行
+        if(current_step > 1){
+            // 前のSTEPに現在ステップにする
+            $(`#progressbar_step_${current_step}`).removeClass('current');
+            $(`#progressbar_step_${current_step-1}`).addClass('current');
+
+            // current_stepを+1する
+            current_step-=1;
+
+            // +1されたcurrent_stepに該当する画面を表示
+            control_view_by_selected_step(current_step);
+        }
+    });
+
 
     ////////////////////////
     // 次のステップが押されたら
@@ -194,7 +212,7 @@ $(function() {
             // 押されたSTEPをactiveにする
             $(`#progressbar_step_${current_step}`).addClass('active');
 
-            // 次のSTEPに現在ステップにする
+            // 次のSTEPを現在ステップにする
             $(`#progressbar_step_${current_step}`).removeClass('current');
             $(`#progressbar_step_${current_step+1}`).addClass('current');
 
@@ -285,24 +303,31 @@ $(function() {
         switch (step) {
             case 1:
                 $("#control_panel_header").children('b').text('STEP1. 拳部');
+                set_disable_back_step_button();
                 break;
             case 2:
                 $("#control_panel_header").children('b').text('STEP2. カラー選択');
+                set_active_back_step_button();
                 break;
             case 3:
                 $("#control_panel_header").children('b').text('STEP3. サイズ');
+                set_active_back_step_button();
                 break;
             case 4:
                 $("#control_panel_header").children('b').text('STEP4. 指の長さ');
+                set_active_back_step_button();
                 break;
             case 5:
                 $("#control_panel_header").children('b').text('STEP5. 当て革の型');
+                set_active_back_step_button();
                 break;
             case 6:
                 $("#control_panel_header").children('b').text('STEP6. オンネーム');
+                set_active_back_step_button();
                 break;
             case 7:
                 $("#control_panel_header").children('b').text('STEP7. 注意事項');
+                set_active_back_step_button();
 
                 if(clear_flug_arr_of_step[step-1]){
                     // クリアされたステップだった場合
@@ -352,11 +377,12 @@ $(function() {
     function set_active_next_step_button(step){
         $("#next_step_button").prop("disabled", false);
 
-        $("#next_step_button").text(`STEP${step}に進む`);
+        // $("#next_step_button").text(`STEP${step}に進む`);
+        $("#next_step_button").text("次に進む");
         $("#next_step_button").css({
             'background-color':'#eb6100',
-            'padding-left':'10px',
-            'padding-right':'10px',
+            'padding-left':'9px',
+            'padding-right':'9px',
         });
         $("#next_step_button").hover(function() {
             // カーソルが当たった時の処理
@@ -368,6 +394,27 @@ $(function() {
     }
 
     /**
+     * 前に戻るボタンを活性化
+     *
+     * @param step ボタンに表示するステップ番号（next step)
+     */
+    function set_active_back_step_button(){
+        $("#back_step_button").prop("disabled", false);
+
+        $("#back_step_button").css({
+            'background-color':'#eb6100',
+            'padding-left':'9px',
+            'padding-right':'9px',
+        });
+        $("#next_step_button").hover(function() {
+            // カーソルが当たった時の処理
+            $(this).css("background-color", "#f56500");
+        }, function() {
+            // カーソルが離れた時の処理
+            $(this).css("background-color", "#eb6100");
+        });
+    }
+    /**
      * 次のステップボタンを無効化
      *
      * @param step ボタンに表示するステップ番号（next step)
@@ -377,7 +424,8 @@ $(function() {
         if(!debug_mode){
             $("#next_step_button").prop("disabled", true);
 
-            $("#next_step_button").text(`STEP${step}に進む`);
+            $("#next_step_button").text("次に進む");
+            // $("#next_step_button").text(`STEP${step}に進む`);
             $("#next_step_button").css({
                 'background-color':'#d8d8d8',
                 'padding-left':'10px',
@@ -391,6 +439,28 @@ $(function() {
                 $(this).css("background-color", "#d8d8d8");
             });
         }
+    }
+
+    /**
+     * 前のステップボタンを無効化
+     *
+     * @param step ボタンに表示するステップ番号（next step)
+     */
+    function set_disable_back_step_button(){
+        $("#back_step_button").prop("disabled", true);
+
+        $("#back_step_button").css({
+            'background-color':'#d8d8d8',
+            'padding-left':'10px',
+            'padding-right':'10px',
+        });
+        $("#next_step_button").hover(function() {
+            // カーソルが当たった時の処理
+            $(this).css("background-color", "#d8d8d8");
+        }, function() {
+            // カーソルが離れた時の処理
+            $(this).css("background-color", "#d8d8d8");
+        });
     }
 
     /**
