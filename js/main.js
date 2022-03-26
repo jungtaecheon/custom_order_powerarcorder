@@ -302,7 +302,7 @@ $(function() {
 
         switch (step) {
             case 1:
-                $("#control_panel_header").children('b').text('STEP1. 拳部');
+                $("#control_panel_header").children('b').text('STEP1. 掌部');
                 set_disable_back_step_button();
                 break;
             case 2:
@@ -524,7 +524,7 @@ $(function() {
 
         switch (color_step) {
             case 1:
-                $("#step_2_title").text('1. 拳部');
+                $("#step_2_title").text('1. 掌部');
                 $("#control_panel_explain_span").text('');
                 break;
             case 2:
