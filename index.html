@@ -358,8 +358,8 @@
                     <!-- STEP2 -->
                     <div id="control_panel_step_2" style="display: none;">
                         <!-- カラー選択のサブタイトル -->
-                        <div class="step-2-title-div">
-                            <p id="step_2_title" class="step-2-title">1. 掌部</p>
+                        <div class="sub-title-div">
+                            <p id="step_2_title" class="sub-title">1. 掌部</p>
                         </div>
 
                         <!-- カラーはサブタイトルがあるので、ここを overflow: scroll; 領域とする -->
@@ -1262,21 +1262,154 @@
                     </div>
 
                     <!-- STEP6 -->
-                    <div class="control-panel-step" id="control_panel_step_6" style="display: none;">
-                        <!-- 準備中<br>
-                        ※色見本は印刷技術上、現物と多少異なる場合があります。<br>
-                        ●上記以外のカラー、また複雑な色の組み合わせはできません。<br>
-                        ●オンネーム位置は手首ベルト部上のみです。<br>
-                        ●左右で文字・カラーを変える場合は、片手オーダーで左右それぞれを指定してください。<br>
-                        ●文字以外の記号は「.」「,」のみの対応になります。「.」「,」も1文字に数えます。<br>
-                        *注意:高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。<br> -->
-                        <div id="control_panel_step_6_select_list">
-                            <div>
-                                <input style="display: block" type="radio" id="panel_select_on_name_1" name="dummy_name_6" value="dummy_value_6_1">
-                                <label for="panel_select_on_name_1">準備中</label>
+                    <!-- 準備中<br>
+                    ※色見本は印刷技術上、現物と多少異なる場合があります。<br>
+                    ●上記以外のカラー、また複雑な色の組み合わせはできません。<br>
+                    ●オンネーム位置は手首ベルト部上のみです。<br>
+                    ●左右で文字・カラーを変える場合は、片手オーダーで左右それぞれを指定してください。<br>
+                    ●文字以外の記号は「.」「,」のみの対応になります。「.」「,」も1文字に数えます。<br>
+                    *注意:高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。<br> -->
+                    <div id="control_panel_step_6" style="display: none;">
+                        <!-- 右手 -->
+                        <!-- サブタイトル -->
+                        <div class="sub-title-div">
+                            <p id="step_6_sub_title" class="sub-title">右手</p>
+                            <div class="switchArea">
+                                <input type="checkbox" id="step_6_right_switch">
+                                <label for="step_6_right_switch"><span></span></label>
+                                <div id="swImg"></div>
                             </div>
                         </div>
+                        <div class="control-panel-step" id="control_panel_step_6_on_name_type_right" style="display: none;">
+                            <div class="control-panel-step-6-select-list-on-name-type-right" id="control_panel_step_6_select_list_on_name_type_right">
+                                <!-- ラジオボタンは非表示 -->
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_1" name="dummy_name_5" value="dummy_value_5_1">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_2" name="dummy_name_5" value="dummy_value_5_2">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_3" name="dummy_name_5" value="dummy_value_5_3">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_4" name="dummy_name_5" value="dummy_value_5_3">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_5" name="dummy_name_5" value="dummy_value_5_3">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_6" name="dummy_name_5" value="dummy_value_5_3">
+                                <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_7" name="dummy_name_5" value="dummy_value_5_3">
+
+                                <!-- labelをラジオボタンに紐付ける -->
+                                <label for="panel_select_on_name_type_right_1" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_1.png">
+                                    <p class="panel-on-name-type-img-tag">漢字、かな、カナ<br>(5文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_2" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_2.png">
+                                    <p class="panel-on-name-type-img-tag">ローマ字活字体<br>(9文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_3" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_3.png">
+                                    <p class="panel-on-name-type-img-tag">ローマ字筆記体<br>(9文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_4" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_4.png">
+                                    <p class="panel-on-name-type-img-tag">数字<br>(5文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_5" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_5.png">
+                                    <p class="panel-on-name-type-img-tag">漢字+数字<br>(足して5文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_6" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_6.png">
+                                    <p class="panel-on-name-type-img-tag">ローマ字活字体+数字<br>(足して8文字まで)</p>
+                                </label>
+                                <label for="panel_select_on_name_type_right_7" class="control-panel-select-item-on-name-type-right-label-step6">
+                                    <img class="panel-on-name-type-img" src="img/on_name_7.png">
+                                    <p class="panel-on-name-type-img-tag">ローマ字筆記体+数字<br>(足して8文字まで)</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-panel-step" id="control_panel_step_6_on_name_text_right" style="display: none;">
+                            <div class="control-panel-step-6-select-list-on-name-text-right">
+                                <input type="text" placeholder="刺繍の内容" id="panel_select_on_name_text_right" name="dummy_name_5" disabled>
+                            </div>
+                        </div>
+                        <div class="control-panel-step" id="control_panel_step_6_on_name_color_right" style="display: none;">
+                            <div class="control-panel-step-6-select-list-on-name-color-right">
+                                <div id="control_panel_step_2_1_select_list" class="control-panel-step-2-select-list">
+                                    <!-- ラジオボタンは非表示 -->
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_white" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_black" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_red" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_navy" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_blue" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_green" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_yellow" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_orange" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_pink" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_purple" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_silver" name="dummy_name_2_1" value="dummy_value_2_1_1">
+                                    <input type="radio" class="panel-select-on-name-color-right" id="panel_select_on_name_color_right_gold" name="dummy_name_2_1" value="dummy_value_2_1_1">
+
+                                    <!-- labelをラジオボタンに紐付ける -->
+                                    <label for="panel_select_on_name_color_right_white" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-white"></div>
+                                        <p class="select-circle-tag">ホワイト</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_black" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-black"></div>
+                                        <p class="select-circle-tag">ブラック</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_red" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-red"></div>
+                                        <p class="select-circle-tag">レッド</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_navy" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-navy"></div>
+                                        <p class="select-circle-tag">ネイビー</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_blue" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-blue"></div>
+                                        <p class="select-circle-tag">ブルー</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_green" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-green"></div>
+                                        <p class="select-circle-tag">グリーン</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_yellow" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-yellow"></div>
+                                        <p class="select-circle-tag">イエロー</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_orange" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-orange"></div>
+                                        <p class="select-circle-tag">オレンジ</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_pink" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-pink"></div>
+                                        <p class="select-circle-tag">ピンク</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_purple" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-purple"></div>
+                                        <p class="select-circle-tag">パープル</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_silver" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-silver"></div>
+                                        <p class="select-circle-tag">シルバー</p>
+                                    </label>
+                                    <label for="panel_select_on_name_color_right_gold" class="control-panel-select-item-on-name-color-right-label-step6">
+                                        <div class="select-circle color-gold"></div>
+                                        <p class="select-circle-tag">ゴールド</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+<hr>
+                        <!-- 左手 -->
+                        <!-- サブタイトル -->
+                        <div class="sub-title-div">
+                            <p id="step_6_sub_title" class="sub-title">左手</p>
+                            <div class="switchArea">
+                                <input type="checkbox" id="step_6_left_switch">
+                                <label for="step_6_left_switch"><span></span></label>
+                                <div id="swImg"></div>
+                            </div>
+                        </div>
+<hr>
                     </div>
+
                     <div style="padding: 20px" id="control_panel_step_7" style="display: none;">
                         準備中<br><br>
                         以下の注意事項にご了承いただくことで楽天市場からご注文いただけます。
