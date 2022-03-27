@@ -1262,13 +1262,6 @@
                     </div>
 
                     <!-- STEP6 -->
-                    <!-- 準備中<br>
-                    ※色見本は印刷技術上、現物と多少異なる場合があります。<br>
-                    ●上記以外のカラー、また複雑な色の組み合わせはできません。<br>
-                    ●オンネーム位置は手首ベルト部上のみです。<br>
-                    ●左右で文字・カラーを変える場合は、片手オーダーで左右それぞれを指定してください。<br>
-                    ●文字以外の記号は「.」「,」のみの対応になります。「.」「,」も1文字に数えます。<br>
-                    *注意:高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。<br> -->
                     <div id="control_panel_step_6" style="display: none;">
                         <!-- 右手 -->
                         <!-- サブタイトル -->
@@ -1281,6 +1274,7 @@
                             </div>
                         </div>
                         <div class="control-panel-step" id="control_panel_step_6_on_name_type_right" style="display: none;">
+                            <p>タイプ</p>
                             <div class="control-panel-step-6-select-list-on-name-type-right" id="control_panel_step_6_select_list_on_name_type_right">
                                 <!-- ラジオボタンは非表示 -->
                                 <input type="radio" class="panel-select-on-name-type-right" id="panel_select_on_name_type_right_1" name="dummy_name_5" value="dummy_value_5_1">
@@ -1323,11 +1317,16 @@
                             </div>
                         </div>
                         <div class="control-panel-step" id="control_panel_step_6_on_name_text_right" style="display: none;">
+                            <p>内容</p>
+                            <div class="control-panel-explain">
+                                <span>文字以外の記号は「.(ピリオド)」「,(カンマ)」のみの対応になります。</span>
+                            </div>
                             <div class="control-panel-step-6-select-list-on-name-text-right">
-                                <input type="text" placeholder="刺繍の内容" id="panel_select_on_name_text_right" name="dummy_name_5" disabled>
+                                <input type="text" placeholder="刺繍タイプを先に選択" id="panel_select_on_name_text_right" name="dummy_name_5" disabled>
                             </div>
                         </div>
                         <div class="control-panel-step" id="control_panel_step_6_on_name_color_right" style="display: none;">
+                            <p>カラー</p>
                             <div class="control-panel-step-6-select-list-on-name-color-right">
                                 <div id="control_panel_step_2_1_select_list" class="control-panel-step-2-select-list">
                                     <!-- ラジオボタンは非表示 -->
@@ -1408,6 +1407,15 @@
                             </div>
                         </div>
 <hr>
+                        <div class="control-panel-explain">
+                            <span>● オンネーム位置は手首ベルト部上のみです。</span>
+                            <br>
+                            <span>● 色見本は印刷技術上、現物と多少異なる場合があります。</span>
+                            <br>
+                            <span>● 上記以外のカラー、また複雑な色の組み合わせはできません。</span>
+                            <br>
+                            <span>● 注意：高校野球公式大会では刺繍による個人名や番号、その他の文字を禁止しています。</span>
+                        </div>
                     </div>
 
                     <div style="padding: 20px" id="control_panel_step_7" style="display: none;">
