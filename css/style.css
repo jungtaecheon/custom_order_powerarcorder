@@ -734,6 +734,15 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         top: 70px;
     }
 
+    .sub-title{
+        margin: 0;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
     .control-panel-contents{
         position: relative;
         margin-top: 0px;
@@ -773,29 +782,6 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         width: 100vw;
         margin-top: 30px;
         height: auto;
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        transition: all 500ms ease;
-    }
-
-    .glove-parts-selector{
-        width: 95vw;
-        height: 80px;
-        position: relative;
-        display: flex;
-        top: 30px;
-        left: 0px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        transition: all 500ms ease;
-    }
-
-    .parts-selector-img {
-        height: 100%;
-        background-color: #f0f0f0;
-        margin-right: 10px;
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
         transition: all 500ms ease;
@@ -861,12 +847,32 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     }
 
     /* STEP2 */
-    .step-2-title{
+    .glove-parts-selector{
+        width: 100vw;
+        height: 80px;
+        position: relative;
+        display: flex;
+        top: 30px;
+        left: 0px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+        background-color: #FFF;
+        padding: 0;
+    }
+
+    .parts-selector-img {
+        height: 90%;
+        background-color: #f0f0f0;
+        /* margin-right: 10px; */
         margin: 0;
-        margin-left: 10px;
-        margin-top: 10px;
-        font-weight: bold;
-        font-size: 16px;
+        margin-left: 5px;
+        margin-right: 5px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
     }
 
     .control-panel-step-2-select-list{
