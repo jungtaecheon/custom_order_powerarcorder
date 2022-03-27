@@ -668,13 +668,7 @@ background     : #78bd78;             /* カーソルタブの背景 */
     position: relative;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
-}
-.panel-select-agree{
-    transform:scale(2.5);
-    cursor: pointer;
-    margin: 10px;
-    border-color:  #9FFF76; /* チェックの色変更 お好きな色を */
+    margin-top: 20px;
 }
 
 /* チェックボックス01 */
@@ -705,8 +699,8 @@ input[type=checkbox].panel-select-agree {
     width: 30px;
 }
 .panel-select-agree-text-label::after {
-    border-right: 8px solid #9FFF76;
-    border-bottom: 8px solid #9FFF76;
+    border-right: 8px solid #78f741;
+    border-bottom: 8px solid #78f741;
     content: '';
     display: block;
     height: 20px;
