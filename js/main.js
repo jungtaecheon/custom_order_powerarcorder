@@ -420,11 +420,11 @@ $(function() {
 
         // STEP7
         // すべての選択肢を押したら完了ボタンを活性化（チェックボックスのため）
-        $("input[name='dummy_name_7']").click(function () {
-            let cnt_checked = $('#control_panel_step_7_select_list input:checkbox:checked').length;
+        $("input[class='panel-select-agree']").click(function () {
+            let cnt_checked = $('.panel-select-agree-div input:checkbox:checked').length;
 
-            // 同意事項4つを想定
-            if (cnt_checked == 4) {
+            // 同意事項1つを想定（複数も対応可能な作り）
+            if (cnt_checked == 1) {
                 clear_flug_arr_of_step[6] = true;
                 // 完了ボタン（活性）
                 set_active_submit_button();
