@@ -646,7 +646,9 @@ background     : #78bd78;             /* カーソルタブの背景 */
     transform:scale(2.0);
     cursor: pointer;
     margin: 5;
+    border-color:  #9FFF76; /* チェックの色変更 お好きな色を */
 }
+
 .final-caution-area{
     background-color: #000;
     padding: 10px;

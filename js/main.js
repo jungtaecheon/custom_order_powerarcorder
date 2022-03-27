@@ -565,7 +565,7 @@ $(function() {
                 set_disable_back_step_button();
                 break;
             case 2:
-                $("#control_panel_header").children('b').text('STEP2. カラー選択');
+                $("#control_panel_header").children('b').text('STEP2. カラー');
                 set_active_back_step_button();
                 break;
             case 3:
