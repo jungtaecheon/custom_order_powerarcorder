@@ -91,10 +91,9 @@ body {
     height: 80%;
     position: absolute;
     top: 70px;
-    left: 47vw;
+    left: 49vw;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 5px;
 }
 
 /* インプットパネル コンテナ */
@@ -866,7 +865,6 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     .parts-selector-img {
         height: 90%;
         background-color: #f0f0f0;
-        /* margin-right: 10px; */
         margin: 0;
         margin-left: 5px;
         margin-right: 5px;
