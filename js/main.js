@@ -17,6 +17,8 @@ let clear_flug_arr_of_color_step = [false, false, false, false, false, false, fa
 let clear_flug_arr_of_step_6_right = [false, false, false];
 // 左手:タイプ、文字、色
 let clear_flug_arr_of_step_6_left = [false, false, false];
+// 初回アクセス化
+let is_first_access_step_6 = true;
 
 const STEP_MAX_COUNT = 7;
 const COLOR_STEP_MAX_COUNT = 16;
@@ -167,18 +169,6 @@ $(function() {
         // トグルボタン
         $('#step_6_right_switch').on('click', function() {
             if ( $(this).prop('checked') == true ) {
-
-                // 右手が完了している、かつ、（左手も完了、もしくは、左手はなし）の場合は、次へボタン活性化
-                if($.inArray(false, clear_flug_arr_of_step_6_right) == -1 &&
-                ($.inArray(false, clear_flug_arr_of_step_6_left) == -1 ||
-                    $('#step_6_left_switch').prop('checked') == false)
-                ){
-                    set_active_next_step_button(7);
-                }else{
-                    // そうじゃない場合は、次へボタン非活性
-                    set_disable_next_step_button(7);
-                }
-
                 $('#control_panel_step_6_on_name_type_right').show();
                 $('#control_panel_step_6_on_name_text_right').show();
                 $('#control_panel_step_6_on_name_color_right').show();
@@ -186,15 +176,32 @@ $(function() {
                 $(".panel-select-on-name-type-right").prop("disabled", false);
                 $(".panel-select-on-name-color-right").prop("disabled", false);
 
-                if ($("input[class='panel-select-on-name-type-right']:checked").val() === undefined) {
-                    // 刺繍タイプが選択される前は disabled を true にする（無効）
+                // こっちは判定タイミングが合わなかった
+                // if ($("input[class='panel-select-on-name-type-right']:checked").val() === undefined) {
+                if (!clear_flug_arr_of_step_6_right[0]) {
+                    // 刺繍タイプが選択される前（disabled=true）は、text も disabled を true （無効）にする
                     $("#panel_select_on_name_text_right").prop("disabled", true);
                 }else{
                     $("#panel_select_on_name_text_right").prop("disabled", false);
                 }
+
+                // 右手が完了している、かつ、（左手も完了、もしくは、左手はなし）の場合は、次へボタン活性化
+                if($.inArray(false, clear_flug_arr_of_step_6_right) == -1 &&
+                ($.inArray(false, clear_flug_arr_of_step_6_left) == -1 ||
+                    $('#step_6_left_switch').prop('checked') == false)
+                ){
+                    clear_flug_arr_of_step[5] = true;
+                    set_active_next_step_button(7);
+                }else{
+                    // そうじゃない場合は、次へボタン非活性
+                    clear_flug_arr_of_step[5] = false;
+                    set_disable_next_step_button(7);
+                }
             } else {
-                if($('#step_6_left_switch').prop('checked') == false){
-                    // 左手がなしの状態で、右手（this）もなしの場合は、次へのボタンを活性化
+                // 右手がなしの場合
+                // 左手がなし、もしくは、完了の状態の場合、次へのボタンを活性化
+                if($('#step_6_left_switch').prop('checked') == false || $.inArray(false, clear_flug_arr_of_step_6_left) == -1){
+                    clear_flug_arr_of_step[5] = true;
                     set_active_next_step_button(7);
                 }
                 $('#control_panel_step_6_on_name_type_right').hide();
@@ -224,9 +231,9 @@ $(function() {
             $("#panel_select_on_name_text_right").prop("disabled", false);
 
             // 選択されている刺繍タイプに沿った処理をするため
-            let mode = $(this).attr('for');
+            let panel_select_on_name_type_id = $(this).attr('for');
             let text_obj = $("#panel_select_on_name_text_right");
-            check_on_name_text(mode, text_obj);
+            check_on_name_text(panel_select_on_name_type_id, text_obj, true);
 
             // 右手が完了している、かつ、（左手も完了、もしくは、左手はなし）の場合は、次へボタン活性化
             if($.inArray(false, clear_flug_arr_of_step_6_right) == -1 &&
@@ -243,9 +250,9 @@ $(function() {
             clear_flug_arr_of_step_6_right[1] = true;
 
             // 選択されている刺繍タイプに沿った処理をするため
-            let mode = $("input[class='panel-select-on-name-type-right']:checked").attr('id');
+            let panel_select_on_name_type_id = $("input[class='panel-select-on-name-type-right']:checked").attr('id');
 
-            check_on_name_text(mode, $(this));
+            check_on_name_text(panel_select_on_name_type_id, $(this), true);
 
             // 右手が完了している、かつ、（左手も完了、もしくは、左手はなし）の場合は、次へボタン活性化
             if($.inArray(false, clear_flug_arr_of_step_6_right) == -1 &&
@@ -255,6 +262,10 @@ $(function() {
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
                 set_active_next_step_button(7);
+            } else {
+                clear_flug_arr_of_step[5] = false;
+                // 次のステップボタン（非活性化）
+                set_disable_next_step_button(7);
             }
         });
         // 刺繍色
@@ -273,6 +284,133 @@ $(function() {
             if($.inArray(false, clear_flug_arr_of_step_6_right) == -1 &&
             ($.inArray(false, clear_flug_arr_of_step_6_left) == -1 ||
                 $('#step_6_left_switch').prop('checked') == false)
+            ){
+                clear_flug_arr_of_step[5] = true;
+                // 次のステップボタン（活性）
+                set_active_next_step_button(7);
+            }
+        });
+
+        // STEP6-左手
+        // トグルボタン
+        $('#step_6_left_switch').on('click', function() {
+            // 左手が完了している、かつ、（右手も完了、もしくは、右手はなし）の場合は、次へボタン活性化
+            if($.inArray(false, clear_flug_arr_of_step_6_left) == -1 &&
+            ($.inArray(false, clear_flug_arr_of_step_6_right) == -1 ||
+                $('#step_6_right_switch').prop('checked') == false)
+            ){
+                clear_flug_arr_of_step[5] = true;
+                set_active_next_step_button(7);
+            }else{
+                // そうじゃない場合は、次へボタン非活性
+                clear_flug_arr_of_step[5] = false;
+                set_disable_next_step_button(7);
+            }
+
+            if ( $(this).prop('checked') == true ) {
+                $('#control_panel_step_6_on_name_type_left').show();
+                $('#control_panel_step_6_on_name_text_left').show();
+                $('#control_panel_step_6_on_name_color_left').show();
+
+                $(".panel-select-on-name-type-left").prop("disabled", false);
+                $(".panel-select-on-name-color-left").prop("disabled", false);
+
+                // こっちは判定タイミングが合わなかった
+                // if ($("input[class='panel-select-on-name-type-left']:checked").val() === undefined) {
+                if (!clear_flug_arr_of_step_6_left[0]) {
+                    // 刺繍タイプが選択される前は、text も disabled を true （無効）にする
+                    $("#panel_select_on_name_text_left").prop("disabled", true);
+                }else{
+                    $("#panel_select_on_name_text_left").prop("disabled", false);
+                }
+            } else {
+                // 左手がなしの場合
+                // 右手がなし、もしくは、完了の状態の場合、次へのボタンを活性化
+                if($('#step_6_right_switch').prop('checked') == false || $.inArray(false, clear_flug_arr_of_step_6_right) == -1){
+                    clear_flug_arr_of_step[5] = true;
+                    set_active_next_step_button(7);
+                }
+                $('#control_panel_step_6_on_name_type_left').hide();
+                $('#control_panel_step_6_on_name_text_left').hide();
+                $('#control_panel_step_6_on_name_color_left').hide();
+
+                $(".panel-select-on-name-type-left").prop("disabled", true);
+                $("#panel_select_on_name_text_left").prop("disabled", true);
+                $(".panel-select-on-name-color-left").prop("disabled", true);
+            }
+        });
+        // 刺繍タイプ
+        $(".control-panel-select-item-on-name-type-left-label-step6").click(function () {
+            clear_flug_arr_of_step_6_left[0] = true;
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-on-name-type-left-label-step6").css('background-color','#dddddd');
+            $(".control-panel-select-item-on-name-type-left-label-step6").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
+
+            // 選択された刺繍タイプの条件をテキストエリアのplaceholderに表示
+            $("#panel_select_on_name_text_left").prop("placeholder", $.trim($(this).text()));
+            // テキストエリアを活性化
+            $("#panel_select_on_name_text_left").prop("disabled", false);
+
+            // 選択されている刺繍タイプに沿った処理をするため
+            let panel_select_on_name_type_id = $(this).attr('for');
+            let text_obj = $("#panel_select_on_name_text_left");
+            check_on_name_text(panel_select_on_name_type_id, text_obj, false);
+
+
+            // 左手が完了している、かつ、（右手も完了、もしくは、右手はなし）の場合は、次へボタン活性化
+            if($.inArray(false, clear_flug_arr_of_step_6_left) == -1 &&
+            ($.inArray(false, clear_flug_arr_of_step_6_right) == -1 ||
+                $('#step_6_right_switch').prop('checked') == false)
+            ){
+                clear_flug_arr_of_step[5] = true;
+                // 次のステップボタン（活性）
+                set_active_next_step_button(7);
+            }
+        });
+        // 刺繍文字
+        $("#panel_select_on_name_text_left").on('input', function () {
+            clear_flug_arr_of_step_6_left[1] = true;
+
+            // 選択されている刺繍タイプに沿った処理をするため
+            let panel_select_on_name_type_id = $("input[class='panel-select-on-name-type-left']:checked").attr('id');
+
+            check_on_name_text(panel_select_on_name_type_id, $(this), false);
+
+            // 右手が完了している、かつ、（左手も完了、もしくは、左手はなし）の場合は、次へボタン活性化
+            if($.inArray(false, clear_flug_arr_of_step_6_left) == -1 &&
+            ($.inArray(false, clear_flug_arr_of_step_6_left) == -1 ||
+                $('#step_6_left_switch').prop('checked') == false)
+            ){
+                clear_flug_arr_of_step[5] = true;
+                // 次のステップボタン（活性）
+                set_active_next_step_button(7);
+            } else {
+                clear_flug_arr_of_step[5] = false;
+                // 次のステップボタン（非活性化）
+                set_disable_next_step_button(7);
+            }
+        });
+        // 刺繍色
+        $(".control-panel-select-item-on-name-color-left-label-step6").click(function () {
+            clear_flug_arr_of_step_6_left[2] = true;
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-on-name-color-left-label-step6").css('background-color','#dddddd');
+            $(".control-panel-select-item-on-name-color-left-label-step6").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
+
+            // 左手が完了している、かつ、（右手も完了、もしくは、右手はなし）の場合は、次へボタン活性化
+            if($.inArray(false, clear_flug_arr_of_step_6_left) == -1 &&
+            ($.inArray(false, clear_flug_arr_of_step_6_right) == -1 ||
+                $('#step_6_right_switch').prop('checked') == false)
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
@@ -343,9 +481,14 @@ $(function() {
             }
         }else{
             // TODO 完了を押した場合
-            alert('準備中');
-            // buttonをtype=submitにする
-            $('#next_step_button').attr('type', 'submit');
+            if ($.inArray(false, clear_flug_arr_of_step) != -1) {
+                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+            } else {
+                // すべてクリアした場合
+                alert('準備中');
+                // buttonをtype=submitにする
+                $('#next_step_button').attr('type', 'submit');
+            }
         }
     });
 
@@ -441,8 +584,23 @@ $(function() {
                 $("#control_panel_header").children('b').text('STEP6. 手首ベルト部の刺繍');
                 set_active_back_step_button();
 
-                // デフォルトは設定なしなので、一旦、前に進むボタンを有効化
-                set_active_next_step_button(step+1);
+                // 1. 順序守る必要あり
+                if(clear_flug_arr_of_step[step-1]){
+                    // クリアされたステップだった場合
+                    // 完了ボタン（活性化）
+                    set_active_next_step_button(step-1);
+                }else{
+                    // 完了ボタン（非活性）
+                    set_disable_next_step_button(step-1);
+                }
+
+                // 2. 順序守る必要あり
+                // デフォルトは設定なしなので、初回アクセス時は、前に進むボタンを有効化
+                if(is_first_access_step_6){
+                    set_active_next_step_button(step+1);
+                }
+                // 初回アクセスフラグをfalseにする
+                is_first_access_step_6 = false;
                 break;
             case 7:
                 $("#control_panel_header").children('b').text('STEP7. 注意事項');
@@ -794,42 +952,67 @@ $(function() {
     /**
      * 刺繍の内容をバリデーションチェックする
      *
-     * @param {*} mode どのチェックが必要化
+     * @param {*} panel_select_on_name_type_id 選択された刺繍タイプのラジオボタンid
      * @param {*} text_obj チェック対象の文字
+     * @param {*} is_right 右手か
      */
-    function check_on_name_text(mode, text_obj){
-        switch (mode) {
+    function check_on_name_text(panel_select_on_name_type_id, text_obj, is_right){
+        // 入力した文字列が 0文字の場合は、clearフラグを取り消す
+        if (text_obj.val().length > 0 ) {
+            if (is_right) {
+                clear_flug_arr_of_step_6_right[1] = true;
+            } else {
+                clear_flug_arr_of_step_6_left[1] = true;
+            }
+        } else {
+            clear_flug_arr_of_step[5] = false;
+            if (is_right) {
+                clear_flug_arr_of_step_6_right[1] = false;
+            } else {
+                clear_flug_arr_of_step_6_left[1] = false;
+            }
+        }
+
+        // 文字数制限を超えたら、その分は即削除する
+        switch (panel_select_on_name_type_id) {
             case "panel_select_on_name_type_right_1":
-                if (text_obj.val().length > 5) {
+            case "panel_select_on_name_type_left_1":
+                    if (text_obj.val().length > 5) {
                     text_obj.val(text_obj.val().slice(0, 5));
                 }
                 break;
             case "panel_select_on_name_type_right_2":
+            case "panel_select_on_name_type_left_2":
                 if (text_obj.val().length > 9) {
                     text_obj.val(text_obj.val().slice(0, 9));
                 }
                 break;
             case "panel_select_on_name_type_right_3":
+            case "panel_select_on_name_type_left_3":
                 if (text_obj.val().length > 9) {
                     text_obj.val(text_obj.val().slice(0, 9));
                 }
                 break;
             case "panel_select_on_name_type_right_4":
+            case "panel_select_on_name_type_left_4":
                 if (text_obj.val().length > 5) {
                     text_obj.val(text_obj.val().slice(0, 5));
                 }
                 break;
             case "panel_select_on_name_type_right_5":
+            case "panel_select_on_name_type_left_5":
                 if (text_obj.val().length > 5) {
                     text_obj.val(text_obj.val().slice(0, 5));
                 }
                 break;
             case "panel_select_on_name_type_right_6":
+            case "panel_select_on_name_type_left_6":
                 if (text_obj.val().length > 8) {
                     text_obj.val(text_obj.val().slice(0, 8));
                 }
                 break;
             case "panel_select_on_name_type_right_7":
+            case "panel_select_on_name_type_left_7":
                 if (text_obj.val().length > 8) {
                     text_obj.val(text_obj.val().slice(0, 8));
                 }
