@@ -438,7 +438,7 @@ $(function() {
                 set_active_back_step_button();
                 break;
             case 6:
-                $("#control_panel_header").children('b').text('STEP6. オンネーム');
+                $("#control_panel_header").children('b').text('STEP6. 手首ベルト部の刺繍');
                 set_active_back_step_button();
 
                 // デフォルトは設定なしなので、一旦、前に進むボタンを有効化
