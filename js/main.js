@@ -66,6 +66,8 @@ $(function() {
             // 次のステップボタン（活性）
             set_active_next_step_button(2);
 
+            console.log();
+
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step1").css('background-color','#dddddd');
             $(".control-panel-select-item-label-step1").css('color','#000');

@@ -252,9 +252,10 @@ body {
  * control-panel
  */
 
-input[type="radio"]{
+/* TODO
+input[type="checkbox"]{
     display: none;
-}
+} */
 
 .control-panel-step{
     padding: 10px;
