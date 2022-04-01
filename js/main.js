@@ -479,16 +479,23 @@ $(function() {
             if(current_step > max_progress_step){
                 max_progress_step = current_step;
             }
+
+            $('#next_step_button').attr('type', 'button');
         }else{
-            // TODO 完了を押した場合
-            if ($.inArray(false, clear_flug_arr_of_step) != -1) {
-                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
-            } else {
+            // 完了を押した場合 TODO
+            // if ($.inArray(false, clear_flug_arr_of_step) != -1) {
+            //     alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+
+            //     $('#next_step_button').attr('type', 'button');
+            // } else {
+            //     // すべてクリアした場合
+            //     // buttonをtype=submitにする
+            //     $('#next_step_button').attr('type', 'submit');
+            // }
+
                 // すべてクリアした場合
-                alert('準備中');
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
-            }
         }
     });
 
