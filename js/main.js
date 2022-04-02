@@ -57,16 +57,26 @@ $(function() {
     ////////////////////////
     // リアルタイム監視
     ////////////////////////
-
     $(document).ready(function () {
+        // !!重要!!
+        // チェックボックスをラジオボタンの動きにする
+        // ・ラジオボタンの動きに點せたくない場合は、「pure_checkbox」を class名に付与する
+        // ・ラジオボタンにするチェックボックスのclass名は、グループを識別できる１つのみを付与する
+        $("input:checkbox").click(function(){
+            let checkbox_class = $(this).attr("class");
+            let checkbox_class_array = checkbox_class.split(" ");
+
+            if ($.inArray('pure_checkbox', checkbox_class_array) == -1) {
+                $('.'+checkbox_class).prop("checked",false);
+                $(this).prop("checked",true);
+            }
+        });
+
         // STEP1
-        // 選択肢を一度でも押したら次のステップボタンを活性化（ラジオボタンのため）
         $(".control-panel-select-item-label-step1").click(function () {
             clear_flug_arr_of_step[0] = true;
             // 次のステップボタン（活性）
             set_active_next_step_button(2);
-
-            console.log();
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step1").css('background-color','#dddddd');
@@ -422,7 +432,7 @@ $(function() {
 
         // STEP7
         // すべての選択肢を押したら完了ボタンを活性化（チェックボックスのため）
-        $("input[class='panel-select-agree']").click(function () {
+        $("#panel_select_agree").click(function () {
             let cnt_checked = $('.panel-select-agree-div input:checkbox:checked').length;
 
             // 同意事項1つを想定（複数も対応可能な作り）
@@ -484,20 +494,21 @@ $(function() {
 
             $('#next_step_button').attr('type', 'button');
         }else{
-            // 完了を押した場合 TODO
-            // if ($.inArray(false, clear_flug_arr_of_step) != -1) {
-            //     alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+            // 完了を押した場合
+            if ($.inArray(false, clear_flug_arr_of_step) != -1) {
+                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
 
-            //     $('#next_step_button').attr('type', 'button');
-            // } else {
-            //     // すべてクリアした場合
-            //     // buttonをtype=submitにする
-            //     $('#next_step_button').attr('type', 'submit');
-            // }
-
+                $('#next_step_button').attr('type', 'button');
+            } else {
                 // すべてクリアした場合
+
+                // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
+                $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
+                $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
+
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
+            }
         }
     });
 

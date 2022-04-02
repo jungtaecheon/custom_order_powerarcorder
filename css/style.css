@@ -251,11 +251,9 @@ body {
 /*
  * control-panel
  */
-
-/* TODO
 input[type="checkbox"]{
     display: none;
-} */
+}
 
 .control-panel-step{
     padding: 10px;
