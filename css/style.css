@@ -251,8 +251,7 @@ body {
 /*
  * control-panel
  */
-
-input[type="radio"]{
+input[type="checkbox"]{
     display: none;
 }
 
