@@ -45,12 +45,19 @@ $(function() {
     $("#debug_mode").click(function () {
         if(debug_mode){
             debug_mode = false;
-            $("#debug_mode").text("進むボタン有効モード");
+            $("#debug_mode").text("検証モードにする");
+            $("#debug_mode").css("color","black");
+            $("#debug_mode").css("background-color","");
+            $("#debug_mode").css("font-weight","");
         }else{
             debug_mode = true;
             set_active_next_step_button('');
             $("#next_step_button").prop("disabled", false);
-            $("#debug_mode").text("有効モード中");
+            $("#debug_mode").text("検証モード中");
+            $("#debug_mode").css("color","white");
+            $("#debug_mode").css("color","white");
+            $("#debug_mode").css("background-color","red");
+            $("#debug_mode").css("font-weight","bold");
         }
     });
 
@@ -494,20 +501,25 @@ $(function() {
 
             $('#next_step_button').attr('type', 'button');
         }else{
-            // 完了を押した場合
-            if ($.inArray(false, clear_flug_arr_of_step) != -1) {
-                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
-
-                $('#next_step_button').attr('type', 'button');
-            } else {
-                // すべてクリアした場合
-
-                // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
-                $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
-                $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
-
+            if(debug_mode){
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
+            }else{
+                // 完了を押した場合
+                if ($.inArray(false, clear_flug_arr_of_step) != -1) {
+                    alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+
+                    $('#next_step_button').attr('type', 'button');
+                } else {
+                    // すべてクリアした場合
+
+                    // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
+                    $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
+                    $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
+
+                    // buttonをtype=submitにする
+                    $('#next_step_button').attr('type', 'submit');
+                }
             }
         }
     });

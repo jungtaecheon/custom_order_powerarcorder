@@ -10,7 +10,7 @@ body {
 /* デバッグ　削除予定 */
 #debug_mode{
     position:absolute;
-    left: 0;
+    left: 10px;
     top: 70px;
 }
 /* div {
@@ -728,7 +728,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     /* デバッグ　削除予定 */
     #debug_mode{
         position:absolute;
-        left: 0;
+        left: 10px;
         top: 70px;
     }
 
