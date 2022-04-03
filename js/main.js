@@ -502,6 +502,10 @@ $(function() {
             $('#next_step_button').attr('type', 'button');
         }else{
             if(debug_mode){
+                // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
+                $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
+                $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
+
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
             }else{
