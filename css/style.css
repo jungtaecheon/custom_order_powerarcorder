@@ -350,7 +350,7 @@ input[type="checkbox"]{
     left: 50%;
     transform: translateY(-40%) translateX(-50%);
     -webkit-transform: translateY(-40%) translateX(-50%);
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5)inset;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .select-circle-tag{
