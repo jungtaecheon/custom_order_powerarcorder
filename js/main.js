@@ -8,7 +8,7 @@ let current_color_step = 1;
 // 一番進んだステップ
 let max_progress_step = 1;
 // ステップごとのクリアフラグ（必須項目を埋めたか）
-let clear_flug_arr_of_step = [false, false, false, false, false, false, false];
+let clear_flug_arr_of_step = [false, false, false, false, false, true, false];
 // カラー選択のクリア数
 let clear_flug_arr_of_color_step = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
