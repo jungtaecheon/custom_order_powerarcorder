@@ -582,7 +582,7 @@ $(function() {
     function control_view_by_selected_step(step){
 
         display_none_control_panel_without_step(step);
-        display_none_parts_selector_without_step3(step);
+        display_none_parts_selector_without_step2(step);
 
         // debugは削除予定
         if(clear_flug_arr_of_step[step-1] || debug_mode){
@@ -674,7 +674,7 @@ $(function() {
      * current_stepが2（カラー選択）以外の場合、parts_selectorを非表示にする
      *
      */
-    function display_none_parts_selector_without_step3(step){
+    function display_none_parts_selector_without_step2(step){
         if(step === 2){
             $("#glove_parts_selector").show();
         }else{
@@ -911,7 +911,7 @@ $(function() {
      *
      */
     function display_none_color_select_without_color_step(color_step){
-        for(var i=1; i<=COLOR_STEP_MAX_COUNT; i++){
+        for(var i=1; i<=clear_flug_arr_of_color_step.length; i++){
             if(color_step === i){
                 $(`#control_panel_step_2_${i}_select_list`).show();
             }else{
