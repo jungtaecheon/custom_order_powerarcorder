@@ -51,7 +51,7 @@ $(function() {
             $("#debug_mode").css("font-weight","");
         }else{
             debug_mode = true;
-            set_active_next_step_button('');
+            set_active_next_step_button();
             $("#next_step_button").prop("disabled", false);
             $("#debug_mode").text("検証モード中");
             $("#debug_mode").css("color","white");
@@ -83,7 +83,7 @@ $(function() {
         $(".control-panel-select-item-label-step1").click(function () {
             clear_flug_arr_of_step[0] = true;
             // 次のステップボタン（活性）
-            set_active_next_step_button(2);
+            set_active_next_step_button();
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step1").css('background-color','#dddddd');
@@ -135,7 +135,7 @@ $(function() {
             if ( !clear_flug_arr_of_color_step.includes(false) ) {
                 clear_flug_arr_of_step[1] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(3);
+                set_active_next_step_button();
             }
         });
 
@@ -143,7 +143,7 @@ $(function() {
         $(".control-panel-select-item-label-step3").click(function () {
             clear_flug_arr_of_step[2] = true;
             // 次のステップボタン（活性）
-            set_active_next_step_button(4);
+            set_active_next_step_button();
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step3").css('background-color','#dddddd');
@@ -158,7 +158,7 @@ $(function() {
         $(".control-panel-select-item-label-step4").click(function () {
             clear_flug_arr_of_step[3] = true;
             // 次のステップボタン（活性）
-            set_active_next_step_button(5);
+            set_active_next_step_button();
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step4").css('background-color','#dddddd');
@@ -173,7 +173,7 @@ $(function() {
         $(".control-panel-select-item-label-step5").click(function () {
             clear_flug_arr_of_step[4] = true;
             // 次のステップボタン（活性）
-            set_active_next_step_button(6);
+            set_active_next_step_button();
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-label-step5").css('background-color','#dddddd');
@@ -210,18 +210,18 @@ $(function() {
                     $('#step_6_left_switch').prop('checked') == false)
                 ){
                     clear_flug_arr_of_step[5] = true;
-                    set_active_next_step_button(7);
+                    set_active_next_step_button();
                 }else{
                     // そうじゃない場合は、次へボタン非活性
                     clear_flug_arr_of_step[5] = false;
-                    set_disable_next_step_button(7);
+                    set_disable_next_step_button();
                 }
             } else {
                 // 右手がなしの場合
                 // 左手がなし、もしくは、完了の状態の場合、次へのボタンを活性化
                 if($('#step_6_left_switch').prop('checked') == false || $.inArray(false, clear_flug_arr_of_step_6_left) == -1){
                     clear_flug_arr_of_step[5] = true;
-                    set_active_next_step_button(7);
+                    set_active_next_step_button();
                 }
                 $('#control_panel_step_6_on_name_type_right').hide();
                 $('#control_panel_step_6_on_name_text_right').hide();
@@ -261,7 +261,7 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             }
         });
         // 刺繍文字
@@ -280,11 +280,11 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             } else {
                 clear_flug_arr_of_step[5] = false;
                 // 次のステップボタン（非活性化）
-                set_disable_next_step_button(7);
+                set_disable_next_step_button();
             }
         });
         // 刺繍色
@@ -306,7 +306,7 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             }
         });
 
@@ -319,11 +319,11 @@ $(function() {
                 $('#step_6_right_switch').prop('checked') == false)
             ){
                 clear_flug_arr_of_step[5] = true;
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             }else{
                 // そうじゃない場合は、次へボタン非活性
                 clear_flug_arr_of_step[5] = false;
-                set_disable_next_step_button(7);
+                set_disable_next_step_button();
             }
 
             if ( $(this).prop('checked') == true ) {
@@ -347,7 +347,7 @@ $(function() {
                 // 右手がなし、もしくは、完了の状態の場合、次へのボタンを活性化
                 if($('#step_6_right_switch').prop('checked') == false || $.inArray(false, clear_flug_arr_of_step_6_right) == -1){
                     clear_flug_arr_of_step[5] = true;
-                    set_active_next_step_button(7);
+                    set_active_next_step_button();
                 }
                 $('#control_panel_step_6_on_name_type_left').hide();
                 $('#control_panel_step_6_on_name_text_left').hide();
@@ -388,7 +388,7 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             }
         });
         // 刺繍文字
@@ -407,11 +407,11 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             } else {
                 clear_flug_arr_of_step[5] = false;
                 // 次のステップボタン（非活性化）
-                set_disable_next_step_button(7);
+                set_disable_next_step_button();
             }
         });
         // 刺繍色
@@ -433,7 +433,7 @@ $(function() {
             ){
                 clear_flug_arr_of_step[5] = true;
                 // 次のステップボタン（活性）
-                set_active_next_step_button(7);
+                set_active_next_step_button();
             }
         });
 
@@ -588,10 +588,10 @@ $(function() {
         if(clear_flug_arr_of_step[step-1] || debug_mode){
             //クリアされたステップだった場合
             // 次のステップボタン（活性化）
-            set_active_next_step_button(step+1);
+            set_active_next_step_button();
         }else{
             // 次のステップボタン（非活性）
-            set_disable_next_step_button(step+1);
+            set_disable_next_step_button();
         }
 
         switch (step) {
@@ -624,16 +624,16 @@ $(function() {
                 if(clear_flug_arr_of_step[step-1]){
                     // クリアされたステップだった場合
                     // 完了ボタン（活性化）
-                    set_active_next_step_button(step-1);
+                    set_active_next_step_button();
                 }else{
                     // 完了ボタン（非活性）
-                    set_disable_next_step_button(step-1);
+                    set_disable_next_step_button();
                 }
 
                 // 2. 順序守る必要あり
                 // デフォルトは設定なしなので、初回アクセス時は、前に進むボタンを有効化
                 if(is_first_access_step_6){
-                    set_active_next_step_button(step+1);
+                    set_active_next_step_button();
                 }
                 // 初回アクセスフラグをfalseにする
                 is_first_access_step_6 = false;
@@ -685,12 +685,10 @@ $(function() {
     /**
      * 次のステップボタンを活性化
      *
-     * @param step ボタンに表示するステップ番号（next step)
      */
-    function set_active_next_step_button(step){
+    function set_active_next_step_button(){
         $("#next_step_button").prop("disabled", false);
 
-        // $("#next_step_button").text(`STEP${step}に進む`);
         $("#next_step_button").text("次に進む");
         $("#next_step_button").css({
             'background-color':'#eb6100',
@@ -730,9 +728,8 @@ $(function() {
     /**
      * 次のステップボタンを無効化
      *
-     * @param step ボタンに表示するステップ番号（next step)
      */
-    function set_disable_next_step_button(step){
+    function set_disable_next_step_button(){
         // debugは削除予定
         if(!debug_mode){
             $("#next_step_button").prop("disabled", true);
