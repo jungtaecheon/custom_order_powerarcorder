@@ -501,29 +501,26 @@ $(function() {
 
             $('#next_step_button').attr('type', 'button');
         }else{
-            if(debug_mode){
+
+            if ($.inArray(false, clear_flug_arr_of_step) == -1 || debug_mode) {
+                // すべてクリアした場合
                 // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
-                $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
-                $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
+                if($('#panel_select_on_name_text_right').prop('disabled')){
+                    $('#panel_select_on_name_text_right_hidden').prop('disabled', true);
+                }else{
+                    $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
+                }
+                if($('#panel_select_on_name_text_left').prop('disabled')){
+                    $('#panel_select_on_name_text_left_hidden').prop('disabled', true);
+                }else{
+                    $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
+                }
 
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
-            }else{
-                // 完了を押した場合
-                if ($.inArray(false, clear_flug_arr_of_step) != -1) {
-                    alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
-
-                    $('#next_step_button').attr('type', 'button');
-                } else {
-                    // すべてクリアした場合
-
-                    // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
-                    $('#panel_select_on_name_text_right_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_on_name_text_right').val() );
-                    $('#panel_select_on_name_text_left_hidden').val( '●【手首ベルト部の刺繍.左手-内容】:'+ $('#panel_select_on_name_text_left').val() );
-
-                    // buttonをtype=submitにする
-                    $('#next_step_button').attr('type', 'submit');
-                }
+            } else {
+                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+                $('#next_step_button').attr('type', 'button');
             }
         }
     });
