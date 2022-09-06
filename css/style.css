@@ -871,7 +871,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     }
 
     .parts-selector-img {
-        height: 90%;
+        width: 75px;
         background-color: #f0f0f0;
         margin: 0;
         margin-left: 5px;
@@ -879,6 +879,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
         transition: all 500ms ease;
+        flex-shrink: 0; /* 潰れないように */
     }
 
     .control-panel-step-2-select-list{
